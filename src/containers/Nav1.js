@@ -67,7 +67,7 @@ class Nav1 extends React.Component {
                                         <ul className="collapse">
                                             <li><a href="https://labelplateformfront.herokuapp.com/Judges/sendEmail"><i className="fa fa-caret-right"></i>
                                                 Add Judge  </a></li>
-                                            <li><a href="https://labelplateformfront.herokuapp.com/judges/demandes"><i className="fa fa-caret-right"></i>
+                                            <li><a href="/judges/demandes"><i className="fa fa-caret-right"></i>
                                                 Show Judges  </a></li>
 
 
