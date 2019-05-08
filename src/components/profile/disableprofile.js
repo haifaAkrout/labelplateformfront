@@ -13,7 +13,7 @@ export default class disableprofile extends React.Component{
 
 
  handleClick = event => {
-       axios.post('http://localhost:6003/users/remove', {user_id:localStorage.user_id})
+       axios.post('https://labelplatform.herokuapp.com/users/remove', {user_id:localStorage.user_id})
                 .then(res => {
                    //  const {token} = res.data;
                    //  localStorage.setItem('jwtToken', token);

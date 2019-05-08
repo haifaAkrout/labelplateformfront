@@ -109,7 +109,7 @@ class ListeProjetByIDSessions extends Component {
                     <div id="content-container">
                         <ContentContainer/>
 
-                        <div className="panel">
+                        <div className="panel td">
 
                             <div className="panel-body">
 
@@ -123,9 +123,9 @@ class ListeProjetByIDSessions extends Component {
 
 
                                 </div>
-                                <Nav tabs id={"nav"}>
+                                <Nav tabs id={"nav"} >
                                     <NavItem>
-                                        <NavLink
+                                        <NavLink className="td"
                                             className={classnames({ active: this.state.activeTab === '1' })}
                                             onClick={() => { this.toggle('1'); }}
                                         >
@@ -133,7 +133,7 @@ class ListeProjetByIDSessions extends Component {
                                         </NavLink>
                                     </NavItem>
                                     <NavItem>
-                                        <NavLink
+                                        <NavLink className="td"
                                             className={classnames({ active: this.state.activeTab === '2' })}
                                             onClick={() => { this.toggle('2'); }}
                                         >
@@ -141,7 +141,7 @@ class ListeProjetByIDSessions extends Component {
                                         </NavLink>
                                     </NavItem>
                                     <NavItem>
-                                        <NavLink
+                                        <NavLink className="td"
                                             className={classnames({ active: this.state.activeTab === '3' })}
                                             onClick={() => { this.toggle('3'); }}
                                         >
@@ -149,7 +149,7 @@ class ListeProjetByIDSessions extends Component {
                                         </NavLink>
                                     </NavItem>
                                 </Nav>
-                                <div className="panel-body">
+                                <div className="panel-body" className="td">
                                     <TabContent activeTab={this.state.activeTab}  id={"table"}>
                                         <TabPane tabId="1">
                                             <Row>

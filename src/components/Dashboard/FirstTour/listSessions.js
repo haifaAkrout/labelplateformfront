@@ -7,7 +7,7 @@ import ContentContainer from "../../../containers/ContentContainer";
 import Nav1 from "../../../containers/Nav1";
 import {Link} from "react-router-dom";
 import "../../../App.css"
-export default class listCandidatures extends React.Component{
+export default class listSessions extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
@@ -52,7 +52,7 @@ export default class listCandidatures extends React.Component{
                         <div className="panel">
                             <div className="panel-body">
 
-                                <Table striped id={"tableSession"}>
+                                <Table striped id={"tableSession"} className="td">
                                     <thead>
                                     <tr>
                                         <th>Name</th>
@@ -70,9 +70,9 @@ export default class listCandidatures extends React.Component{
                                         else
                                             return(
                                                 <tr  key={idx}>
-                                                    <td>
+                                                    <td   >
 
-                                                        <Link to={"/sessions/listeProjetsparIdSes/"+ session._id} params={{ idSession: session._id}}>{session.Name}</Link>
+                                                        <Link style={{color:"Black"}} to={"/sessions/listeProjetsparIdSes/"+ session._id} params={{ idSession: session._id}}>{session.Name}</Link>
                                                     </td>
                                                     <td>
                                                         {Moment(session.StartDate).format('DD-MM-YYYY')}

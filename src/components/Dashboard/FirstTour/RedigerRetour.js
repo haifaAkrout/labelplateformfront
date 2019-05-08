@@ -53,7 +53,7 @@ export default class RedigerRetour extends Component {
         console.log("id session")
         console.log(idSessionP)
         console.log(idProjet)
-        axios.get('http://localhost:6003/projects/detailsProjets/'+idSessionP+'/'+idProjet)
+        axios.get('https://labelplatform.herokuapp.com//projects/detailsProjets/'+idSessionP+'/'+idProjet)
             .then(response => {
 
                 this.setState({

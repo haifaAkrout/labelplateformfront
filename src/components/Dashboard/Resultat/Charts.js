@@ -32,7 +32,7 @@ export  default  class Resultat extends React.Component{
         // const {idSession} = this.props.match.params
         // console.log(idSession)
         var listeProjet=[];
-        axios.get(`http://localhost:6003/sessions/charts/5cba2219bb0f481fe0e48b36`)
+        axios.get(`https://labelplatform.herokuapp.com/sessions/charts/5cba2219bb0f481fe0e48b36`)
             .then(response => {
                 const projets=response.data;
                 let listePValide=[];

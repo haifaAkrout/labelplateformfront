@@ -156,13 +156,13 @@ export  default  class Resultat extends React.Component{
                                         <TabPane tabId="1">
                                             <Row>
                                                 <Col sm="12">
-                                                    <Table striped id={"table"}>
+                                                    <Table className="td" striped id={"table"}>
                                                         <thead>
                                                         <tr>
                                                             <th>Type </th>
                                                             <th>Candidature</th>
                                                             <th>Lead </th>
-                                                            <th>Soumis le </th>
+                                                            <th>Soumishhhh le </th>
                                                             <th>Charge</th>
                                                             <th>Resultat</th>
                                                             <th>Action</th>

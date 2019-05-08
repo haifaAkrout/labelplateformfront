@@ -98,7 +98,7 @@ export default class AddMember extends Component{
                 }
             };
 
-            axios.post('http://localhost:6003/members/addMemberwithLinkedIn/5cba2219bb0f481fe0e48b36/5cba238d2b5d6736fc6c8949',
+            axios.post('https://labelplatform.herokuapp.com//members/addMemberwithLinkedIn/5cd2be1253a4e101c8942f09/5cd2c2c3a5129d9a70c1d165',
                 formData,config).then(res => {
                 console.log(res);
                 //  this.props.history.push('/sessions/');

@@ -42,7 +42,7 @@ export default class ListeEquipe extends React.Component {
         console.log(idSessionP)
         console.log("idProjet");
         console.log(idProjet)
-        axios.get('http://localhost:6003/projects/ListeMembres/'+idSessionP+'/'+idProjet)
+        axios.get('https://labelplatform.herokuapp.com/projects/ListeMembres/'+idSessionP+'/'+idProjet)
             .then(response => {
                 this.setState({
                     loading: false,
@@ -105,7 +105,7 @@ export default class ListeEquipe extends React.Component {
                         <ContentContainer/>
 
 
-                        <div className="panel">
+                        <div className="panel" style={{float:"left"}} className="td" >
 
                             <div className="panel-body">
                                 <div className="panel-heading" id={"divtitle"}>
@@ -206,7 +206,12 @@ export default class ListeEquipe extends React.Component {
                                     </tbody>
                                 </Table>
                                 <div id={"btnajout"}>
-                                    <Link to={"/members/addMember"}>Ajouter un nouveau membre</Link>
+                                    <Link  style={{color:"Black"}} to={"/members/addMember/"+this.state.idSession+"/"+this.state.idProj}
+                                           params={{
+                                               idSession: this.state.idSess,
+                                               idProjet: this.state.idProj
+                                           }}
+                                    >Ajouter un nouveau membre</Link>
 
                                 </div>
                             </div>

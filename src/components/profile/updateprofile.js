@@ -77,7 +77,7 @@ handleChange(event) {
  handleClick2 = event => {
    
    if(this.state.password.length != 0 && this.state.password == this.state.cfpassword){
- axios.post('http://localhost:6003/users/update/pwd', {
+ axios.post('https://labelplatform.herokuapp.com/users/update/pwd', {
    user_id: localStorage.user_id,
    
    password:this.state.password, 

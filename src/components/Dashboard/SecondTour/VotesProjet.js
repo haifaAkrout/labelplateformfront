@@ -48,7 +48,7 @@ class VotesProjet extends React.Component{
 
     componentDidMount() {
         const {id2}=this.props.match.params
-        axios.get('http://localhost:6003/candidatures/'+id2).then(res=>{
+        axios.get('https://labelplatform.herokuapp.com//candidatures/'+id2).then(res=>{
             console.log(res.data.Project)
             this.setState({NomSession:res.data.Name});
             this.setState({Sessions:res.data.Project});

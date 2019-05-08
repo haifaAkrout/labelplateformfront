@@ -61,7 +61,7 @@ class DetailsCandidatureAJuger extends React.Component{
         this.state.currentJudge =setCurrentUser(decoded)
 console.log(this.state.currentJudge.payload.id)
         const {id2}=this.props.match.params
-        axios.get('http://localhost:6003/candidatures/'+id2).then(res=>{
+        axios.get('https://labelplatform.herokuapp.com//candidatures/'+id2).then(res=>{
             console.log(res.data.Project)
             this.setState({NomSession:res.data.Name});
             this.setState({Projects:res.data.Project});

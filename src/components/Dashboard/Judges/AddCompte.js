@@ -16,7 +16,7 @@ import logo from "../../login/logo_label_blanc.png";
 
 import Header2 from "../../Front/front2";
 import {Link} from "react-router-dom";
-
+import axios from "axios";
 class AddCompte extends Component{
     createNotification = (type) => {
         return () => {
@@ -96,7 +96,12 @@ class AddCompte extends Component{
 
         }
         event.preventDefault();
-        this.props. addCompte(judge); }
+       // this.props. addCompte(judge);
+        axios.put('http://localhost:6003/judges/addCompte',judge
+        )
+
+
+    }
     render(){
 
         return(
