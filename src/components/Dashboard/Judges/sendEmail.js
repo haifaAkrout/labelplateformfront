@@ -81,7 +81,7 @@ class sendEmail extends Component{
         const email={
             To: this.state.To,
             Subject: "Invitation",
-            Content:"http://localhost:3000/Judges/addCompte",
+            Content:"https://labelplatform.herokuapp.com/Judges/addCompte",
             LastName:this.state.LastName,
             FirstName:this.state.FirstName
 
