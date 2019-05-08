@@ -4,7 +4,7 @@ import setAuthToken from '../../setAuthToken';
 import jwt_decode from 'jwt-decode';
 export const sendemail= (email) => {
     return async dispatch => {
-        const response = axios.post('http://localhost:6003/sendEmailToJudge',email
+        const response = axios.post('https://labelplatform.herokuapp.com/sendEmailToJudge',email
         ).then(res=>{console.log(res);
             console.log(res.data)})
 
@@ -19,7 +19,7 @@ export const sendemail= (email) => {
 
 export const addCompte= (Judge) => {
     return async dispatch => {
-        const response = axios.put('http://localhost:6003/judges/addCompte',Judge
+        const response = axios.put('https://labelplatform.herokuapp.com/judges/addCompte',Judge
         ).then(res=>{console.log(res);
             console.log(res.data)})
 
@@ -33,7 +33,7 @@ export const addCompte= (Judge) => {
 };
 export const deleteJudge= (DemandeId,JudgeId) => {
     return async dispatch => {
-        const response = axios.delete('http://localhost:6003/judges/'+DemandeId+'/'+JudgeId
+        const response = axios.delete('https://labelplatform.herokuapp.com/judges/'+DemandeId+'/'+JudgeId
         ).then(res=>{console.log(res);
             console.log(res.data)})
 
@@ -47,7 +47,7 @@ export const deleteJudge= (DemandeId,JudgeId) => {
 };
 export const accepterJudge= (JudgeId,judge) => {
     return async dispatch => {
-        const response = axios.put('http://localhost:6003/judges/update/'+JudgeId,judge
+        const response = axios.put('https://labelplatform.herokuapp.com/judges/update/'+JudgeId,judge
         ).then(res=>{console.log(res);
             console.log(res.data)})
 

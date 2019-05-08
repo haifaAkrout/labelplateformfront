@@ -56,7 +56,7 @@ export  default  class Resultat extends React.Component{
     componentDidMount=event=> {
         // const {idSession} = this.props.match.params
         // console.log(idSession)
-        axios.get(`http://localhost:6003/sessions/resultat/5cba2219bb0f481fe0e48b36`)
+        axios.get(`https://labelplatform.herokuapp.com/sessions/resultat/5cba2219bb0f481fe0e48b36`)
             .then(response => {
                 this.setState({
                         resultats: response.data.Project,
@@ -84,7 +84,7 @@ export  default  class Resultat extends React.Component{
     }
 
     sendMail (idCand) {
-        axios.get(`http://localhost:6003/avis/sendEmailToMember/`+idCand)
+        axios.get(`https://labelplatform.herokuapp.com/avis/sendEmailToMember/`+idCand)
             .then(response => {
                 this.setState({
                         resultats: response.data.Project,
