@@ -44,7 +44,7 @@ class login2 extends React.Component{
 
             Email: this.state.Email,
             Password: this.state.Password,}
-        axios.post('https://labelplatform.herokuapp.com/judges/login', user)
+        axios.post('https://labelplatform.herokuapp.com/Judges/login4', user)
             .then(res => {
                 const {token} = res.data;
                 localStorage.setItem('jwtToken', token);

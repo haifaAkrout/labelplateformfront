@@ -42,7 +42,7 @@ class EditJudge extends Component{
     componentDidMount() {
         const {id1}=this.props.match.params
         console.log(id1)
-        axios.get('http://localhost:6003/Judges/find/'+id1).then(res=>{
+        axios.get('https://labelplatform.herokuapp.com//Judges/find/'+id1).then(res=>{
             console.log(res.data)
             console.log();
             this.setState({LastName:res.data.LastName,FirstName:res.data.FirstName,Email:res.data.Email,

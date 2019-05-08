@@ -96,9 +96,9 @@ class AddCompte extends Component{
 
         }
         event.preventDefault();
-       // this.props. addCompte(judge);
-        axios.put('https://labelplatform.herokuapp.com/judges/addCompte',judge
-        )
+        this.props. addCompte(judge);
+       //  axios.put('https://labelplatform.herokuapp.com/judges/addCompte',judge
+       //  )
 
 
     }
