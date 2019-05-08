@@ -81,7 +81,7 @@ class sendEmail extends Component{
         const email={
             To: this.state.To,
             Subject: "Invitation",
-            Content:"https://labelplatform.herokuapp.com/Judges/addCompte",
+            Content:"https://labelplateformfront.herokuapp.com/Judges/addCompte",
             LastName:this.state.LastName,
             FirstName:this.state.FirstName
 
@@ -165,7 +165,7 @@ class sendEmail extends Component{
                                 <div className="form-group nb">
                                     <label style={{color:"black",fontSize:"12px"}} className="control-label col-md-2">Content: </label>
                                     <div className="col-md-7">
-                                        <textarea type="text" disabled value="https://labelplatform.herokuapp.com/Judges/addCompte" name="Content" onChange={this.handleContentChange} className="form-control "/>
+                                        <textarea type="text" disabled value="https://labelplateformfront.herokuapp.com/Judges/addCompte" name="Content" onChange={this.handleContentChange} className="form-control "/>
                                     </div>
                                 </div>
                                 <NotificationContainer hidden={this.state.error2 || this.state.error1}/>
