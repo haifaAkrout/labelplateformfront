@@ -47,17 +47,17 @@ class JudgeList extends React.Component{
     };
     componentDidMount() {
 
-      //
-      //   console.log(localStorage.getItem('jwtToken'));
-      // //   setAuthToken(localStorage.getItem("token"));
-      //   const decoded = jwt_decode(localStorage.getItem('jwtToken'));
-      //   const user1 =setCurrentUser(decoded)
-      //   console.log(user1.id)
+
+        console.log(localStorage.getItem('jwtToken'));
+      //   setAuthToken(localStorage.getItem("token"));
+        const decoded = jwt_decode(localStorage.getItem('jwtToken'));
+        const user1 =setCurrentUser(decoded)
+        console.log(user1.id)
         this.loadJudges();
     }
 
     loadJudges = ()=> {
-        axios.get('http://localhost:6003/Judges/listJudges').then(res => {
+        axios.get('https://labelplatform.herokuapp.com/Judges/listJudges').then(res => {
 
             this.setState({Judges: res.data,loading:false});
         })
