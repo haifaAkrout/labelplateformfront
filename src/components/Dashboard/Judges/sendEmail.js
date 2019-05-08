@@ -165,7 +165,7 @@ class sendEmail extends Component{
                                 <div className="form-group nb">
                                     <label style={{color:"black",fontSize:"12px"}} className="control-label col-md-2">Content: </label>
                                     <div className="col-md-7">
-                                        <textarea type="text" disabled value="http://localhost:3000/Judges/addCompte" name="Content" onChange={this.handleContentChange} className="form-control "/>
+                                        <textarea type="text" disabled value="https://labelplatform.herokuapp.com/Judges/addCompte" name="Content" onChange={this.handleContentChange} className="form-control "/>
                                     </div>
                                 </div>
                                 <NotificationContainer hidden={this.state.error2 || this.state.error1}/>
