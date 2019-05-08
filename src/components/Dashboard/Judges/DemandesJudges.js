@@ -52,7 +52,7 @@ class JudgeList extends React.Component{
       //   setAuthToken(localStorage.getItem("token"));
         const decoded = jwt_decode(localStorage.getItem('jwtToken'));
         const user1 =setCurrentUser(decoded)
-        console.log(user1.id)
+        console.log(user1.payload.id)
         this.loadJudges();
     }
 
@@ -66,7 +66,7 @@ class JudgeList extends React.Component{
     handleclick(id,id1){
 
 
-        axios.delete('http://localhost:6003/judges/'+id+'/'+id1
+        axios.delete('https://labelplatform.herokuapp.com/judges/'+id+'/'+id1
         ).then((res)=>{
 
                    console.log(res.data.done)
@@ -101,14 +101,14 @@ this.loadJudges()
 
 
 
-                        <div className="panel">
+                        <div className="panel td" style={{width:"1000px"}}>
                             <div className="panel-heading">
-                                <h3 className="panel-title">     <a href="/Judges/demandes"><strong>Judges </strong></a><strong>->all</strong></h3>
+                                <h3 className="panel-title" style={{float:"left"}}>     <a href="/Judges/demandes"><strong>Judges </strong></a><strong>->all</strong></h3>
                             </div>
                             <div className="panel-body" className="td">
                                 <table ref="table2" id="demo-dt-basic" className="table table-striped table-bordered">
                                     <thead>
-                                    <tr>
+                                    <tr style={{fontSize:"14px"}}>
                                         <th>lastName and FirstName </th>
                                         <th>Email</th>
                                         <th className="min-tablet">Creation date</th>
@@ -117,7 +117,7 @@ this.loadJudges()
 
                                     </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody style={{fontSize:"12px"}}>
                                     {this.state.Judges.map(function(d, idx){
                                         return (
 
@@ -134,7 +134,7 @@ this.loadJudges()
                                                     className="btn btn-info"
                                                 >Delete
                                                 </button>
-                                                <button className="btn btn-pink">  <Link to={"/Judges/editCompte/"+d._id}params={{ id1: d._id}}>Edit</Link>
+                                                <button className="btn btn-pink ">  <Link to={"/Judges/editCompte/"+d._id}params={{ id1: d._id}}>Edit</Link>
                                                 </button>
 
                                                 </td>
@@ -146,7 +146,7 @@ this.loadJudges()
                                     </tbody>
                                 </table>
 
-                          <strong>  <Link to={"/Judges/sendEmail/"}>Add a judge</Link></strong>
+                          <strong>  <Link style={{color:"Black",fontSize:"12px"}} to={"/Judges/sendEmail/"}>Add a judge</Link></strong>
 
 
                             </div>
