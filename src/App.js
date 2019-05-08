@@ -91,7 +91,7 @@ class App extends Component {
                 <Route path="/logout" exact component={logout} />
                 <Route path="/register" exact component={register} />
               <Route path="/Judges/sendEmail" exact component={sendEmail} />
-                <Route path="/Judges/addCompte/" exact component={AddCompte} />
+                <Route path="../https://labelplatform.herokuapp.com/Judges/addCompte/" exact component={AddCompte} />
                 <Route path="/Judges/demandes" exact component={JudgeList} />
                 <Route  path="/Judges/editCompte/:id1" exact component={EditJudge} />
                 <Route path="/SecondTour/:id1" exact component={listCandidatures} />
