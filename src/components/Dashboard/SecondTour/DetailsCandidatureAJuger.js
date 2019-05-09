@@ -3,7 +3,7 @@ import { TabContent, TabPane, Nav, NavItem, NavLink, Card, Button, CardTitle, Ca
 import classnames from 'classnames';
 import { Progress } from 'reactstrap';
 import ReactDOM from 'react-dom';
-import Nav1 from '../../../containers/Nav1.js';
+import Nav2 from '../../../containers/Nav2.js';
 import {enregistrerBrouillonJudge, setCurrentUser,} from "../../../store/actions";
 import {refuserCandidature,} from "../../../store/actions";
 import {appelerCandidature,} from "../../../store/actions";
@@ -19,7 +19,26 @@ import ContentContainer from "../../../containers/ContentContainer";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "../../../setAuthToken";
 class DetailsCandidatureAJuger extends React.Component{
-
+    createNotification = (type) => {
+        return () => {
+            switch (type) {
+                case 'info':
+                    NotificationManager.info('Your brouillon has been enregistered');
+                    break;
+                case 'success':
+                    NotificationManager.success('Tha candidature has been accepted', 'Acceptence');
+                    break;
+                case 'warning':
+                    NotificationManager.warning('Tha candidature has been refused', 'Refusal', 3000);
+                    break;
+                case 'error':
+                    NotificationManager.error('Error message', 'Click me!', 5000, () => {
+                        alert('callback');
+                    });
+                    break;
+            }
+        };
+    };
 
 
     constructor(props) {
@@ -107,7 +126,7 @@ class DetailsCandidatureAJuger extends React.Component{
             const id4=this.state.id3;
 
             this.props.refuserCandidature(this.state.currentJudge.payload.id,id4,Review)
-            axios.post('https://labelplatform.herokuapp.com/candidatures/call/'+55626214).then(res=>{
+            axios.post('https://labelplatform.herokuapp.com/candidatures/call/'+12063505763).then(res=>{
                 console.log(res.data)
 
 
@@ -127,7 +146,7 @@ class DetailsCandidatureAJuger extends React.Component{
             }
 
             const id4=this.state.id3;
-            this.props.appelerCandidature(this.state.currentJudge.payload.id,id4,58011658,Review)
+            this.props.appelerCandidature(this.state.currentJudge.payload.id,id4,12063505763,Review)
 
         }
     }
@@ -311,7 +330,7 @@ class DetailsCandidatureAJuger extends React.Component{
 
                                                         <h2 className="panel-title" style={{float: 'left',width: '34%', textalign:'left'}}>
 
-                                                            <button className="btn btn-info "  onClick={this.handleSubmit(this.refs.container).bind(this)}type="submit">Save brouillon</button></h2>
+                                                            <Link onClick={this.createNotification("info")}>    <button className="btn btn-info "  onClick={this.handleSubmit(this.refs.container).bind(this)}type="submit">Save brouillon</button></Link></h2>
 
 
 
@@ -320,15 +339,15 @@ class DetailsCandidatureAJuger extends React.Component{
                                                         <p className="panel-title" style={{float: 'left', width: '33%', textalign: 'center'}}>
 
 
-                                                            <button className="btn btn-danger" onClick={this.handleSubmit2(this.refs.container).bind(this)} type="submit">Refuse</button></p>
+                                                            <Link onClick={this.createNotification("warning")}>      <button className="btn btn-danger" onClick={this.handleSubmit2(this.refs.container).bind(this)} type="submit">Refuse</button></Link></p>
 
 
 
 
 
                                                         <p className="panel-title" style={{float: 'left', width: '15%', textalign: 'right'}}>
-                                                            <button className="btn btn-success" type="submit" onClick={this.handleSubmit3(this.refs.container).bind(this)}>
-                                                                Call  pitch</button>
+                                                            <Link onClick={this.createNotification("success")}>         <button className="btn btn-success" type="submit" onClick={this.handleSubmit3(this.refs.container).bind(this)}>
+                                                                Invitation  pitch</button></Link>
 
                                                         </p>
 
@@ -354,7 +373,7 @@ class DetailsCandidatureAJuger extends React.Component{
                                 </TabContent>
                             </div>
                         </div>
-                        <Nav1/>
+                        <Nav2/>
 
                     </div>
                     <NotificationContainer/>
