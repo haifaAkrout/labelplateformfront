@@ -533,7 +533,7 @@ export  default  class listCandidatures extends React.Component{
                                                                         to={"/SecondTour/" + this.state.SessionId + "/Details/" + d._id}
                                                                         params={{
                                                                             id1: d._id,
-                                                                            id2: '5ca6d387cf19b7956820d8f4'
+                                                                            id2: this.state.SessionId
                                                                         }}>Juger</Link></button>
                                                                 </center>
 
