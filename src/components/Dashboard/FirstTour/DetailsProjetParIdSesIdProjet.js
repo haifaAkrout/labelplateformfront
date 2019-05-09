@@ -76,7 +76,7 @@ export default class DetailsProjetParIdSesIdProjet extends Component {
         console.log("id session")
         console.log(idSessionP)
         console.log(idProjet)
-        axios.get('http://localhost:6003/projects/detailsProjets/'+idSessionP+'/'+idProjet)
+        axios.get('https://labelplatform.herokuapp.com/projects/detailsProjets/'+idSessionP+'/'+idProjet)
             .then(response => {
 
                 this.setState({
@@ -121,7 +121,7 @@ export default class DetailsProjetParIdSesIdProjet extends Component {
                 cause: ''
 
             }
-            axios.put('http://localhost:6003/reviewC/updateAvisCharge/' + idP + '/' + idC, charge
+            axios.put('https://labelplatform.herokuapp.com/reviewC/updateAvisCharge/' + idP + '/' + idC, charge
             ).then(res => {
                 console.log(res)
                 console.log(res.data)
@@ -130,7 +130,7 @@ export default class DetailsProjetParIdSesIdProjet extends Component {
             const candidature = {
                 Status: instance
             }
-            axios.put('http://localhost:6003/reviewC/updateCandidature/' + idP, candidature
+            axios.put('https://labelplatform.herokuapp.com/reviewC/updateCandidature/' + idP, candidature
             ).then(res => {
                 console.log(res);
                 console.log(res.data)
@@ -145,7 +145,7 @@ export default class DetailsProjetParIdSesIdProjet extends Component {
                 estValide: this.state.dossierValide,
                 cause: refus
             };
-            axios.put('http://localhost:6003/reviewC/updateAvisCharge/' + idP + '/' + idC, charge
+            axios.put('https://labelplatform.herokuapp.com/reviewC/updateAvisCharge/' + idP + '/' + idC, charge
             ).then(res => {
                 console.log(res);
                 console.log(res.data)
@@ -155,7 +155,7 @@ export default class DetailsProjetParIdSesIdProjet extends Component {
             const candidature = {
                 Status: instance
             }
-            axios.put('http://localhost:6003/reviewC/updateCandidature/' + this.state.idProjet, candidature
+            axios.put('https://labelplatform.herokuapp.com/reviewC/updateCandidature/' + this.state.idProjet, candidature
             ).then(res => {
                 console.log(res);
                 console.log(res.data)
@@ -185,7 +185,7 @@ export default class DetailsProjetParIdSesIdProjet extends Component {
                 cause: ''
 
             }
-            axios.put('http://localhost:6003/reviewC/updateAvisCharge/' + idP + '/' + idC, charge
+            axios.put('https://labelplatform.herokuapp.com/reviewC/updateAvisCharge/' + idP + '/' + idC, charge
             ).then(res => {
                 console.log(res)
                 console.log(res.data)
@@ -194,7 +194,7 @@ export default class DetailsProjetParIdSesIdProjet extends Component {
             const candidature = {
                 Status: this.state.Avis
             }
-            axios.put('http://localhost:6003/reviewC/updateCandidature/' + idP, candidature
+            axios.put('https://labelplatform.herokuapp.com/reviewC/updateCandidature/' + idP, candidature
             ).then(res => {
                 console.log(res);
                 console.log(res.data)
@@ -209,7 +209,7 @@ export default class DetailsProjetParIdSesIdProjet extends Component {
                 estValide: this.state.dossierValide,
                 cause: refus
             };
-            axios.put('http://localhost:6003/reviewC/updateAvisCharge/' + idP + '/' + idC, charge
+            axios.put('https://labelplatform.herokuapp.com/reviewC/updateAvisCharge/' + idP + '/' + idC, charge
             ).then(res => {
                 console.log(res);
                 console.log(res.data)
@@ -219,7 +219,7 @@ export default class DetailsProjetParIdSesIdProjet extends Component {
             const candidature = {
                 Status: this.state.Avis
             };
-            axios.put('http://localhost:6003/reviewC/updateCandidature/' + this.state.idProjet, candidature
+            axios.put('https://labelplatform.herokuapp.com/reviewC/updateCandidature/' + this.state.idProjet, candidature
             ).then(res => {
                 console.log(res);
                 console.log(res.data)

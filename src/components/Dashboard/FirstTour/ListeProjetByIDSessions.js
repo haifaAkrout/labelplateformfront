@@ -49,7 +49,7 @@ class ListeProjetByIDSessions extends Component {
     componentDidMount() {
         const {idSessionP} = this.props.match.params
         console.log(idSessionP)
-        axios.get(`http://localhost:6003/sessions/listeProjetsparIdSes/`+idSessionP)
+        axios.get(`https://labelplatform.herokuapp.com/sessions/listeProjetsparIdSes/`+idSessionP)
             .then(response => {
                 this.setState({
                     projets:response.data.Project,
@@ -68,7 +68,7 @@ class ListeProjetByIDSessions extends Component {
             })
 
         //afficher liste de chargees
-        axios.get(`http://localhost:6003/sessions/charges/`)
+        axios.get(`https://labelplatform.herokuapp.com/sessions/charges/`)
             .then(response => {
                 this.setState({
                     charges: response.data,
@@ -91,7 +91,7 @@ class ListeProjetByIDSessions extends Component {
         this.setState({ chargeSelected : e.target.value });
         console.log("id charge selected")
         console.log(e.target.value)
-        axios.post('http://localhost:6003/projects/affectation/'+idP+'/'+e.target.value
+        axios.post('https://labelplatform.herokuapp.com/projects/affectation/'+idP+'/'+e.target.value
         ).then(res=>{
             console.log(res);
             console.log(res.data);
