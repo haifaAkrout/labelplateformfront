@@ -267,23 +267,23 @@ console.log(this.state.currentJudge.payload.id)
 
 </div><br/><br/><br/><br/><hr/>
 
-                                                {project.createdBy.Questions.map(question => (
-                                                    <div  style={{float:"left"}}>
+                                                {/*{project.createdBy.Questions.map(question => (*/}
+                                                    {/*<div  style={{float:"left"}}>*/}
 
 
 
-                                                         <h4>Question:</h4>   {question.text}
-                                                        {question.responses.map(response => (
+                                                         {/*<h4>Question:</h4>   {question.text}*/}
+                                                        {/*{question.responses.map(response => (*/}
 
-<div>
-    {response.text}</div>
+{/*<div>*/}
+    {/*{response.text}</div>*/}
 
 
-                                                        ))}
+                                                        {/*))}*/}
 
-                                                    </div>
+                                                    {/*</div>*/}
 
-                                                ))}
+                                                {/*))}*/}
 
 
 

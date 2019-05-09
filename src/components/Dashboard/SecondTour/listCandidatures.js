@@ -156,7 +156,7 @@ export  default  class listCandidatures extends React.Component{
                                             <tr>
                                                 <th>Type of candidature </th>
                                                 <th >Project Name </th>
-                                                <th >Lead </th>
+                                                {/*<th >Lead </th>*/}
 
                                                 <th >Soumission Date </th>
                                                 <th> Review Charge </th>
@@ -177,7 +177,7 @@ export  default  class listCandidatures extends React.Component{
                                                                 <td>{d.createdBy.TypeLabel.type}</td>
                                                                 <td>{d.Name}</td>
 
-                                                                <td>{d.members[0].Email}</td>
+                                                                {/*<td>{d.members[0].Email}</td>*/}
                                                                 <td>{d.createdBy.TypeLabel.SoumissionDate}</td>
                                                                 <td>{d.createdBy.charges.review.type}</td>
                                                                 <td>{d.createdBy.Status}</td>
