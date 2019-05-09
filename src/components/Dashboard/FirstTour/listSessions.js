@@ -4,7 +4,7 @@ import Moment from 'moment';
 import { Table } from 'reactstrap';
 import Header from "../../../containers/Header";
 import ContentContainer from "../../../containers/ContentContainer";
-import Nav1 from "../../../containers/Nav1";
+import Nav3 from "../../../containers/Nav1";
 import {Link} from "react-router-dom";
 import "../../../App.css"
 export default class listSessions extends React.Component{
@@ -98,7 +98,7 @@ export default class listSessions extends React.Component{
 
                     </div>
 
-                    <Nav1/>
+                    <Nav3/>
 
                 </div>
 

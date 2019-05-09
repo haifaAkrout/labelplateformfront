@@ -4,7 +4,7 @@ import axios from 'axios'
 import {Link} from "react-router-dom";
 import Header from "../../../containers/Header";
 import ContentContainer from "../../../containers/ContentContainer";
-import Nav1 from "../../../containers/Nav1";
+import Nav3 from "../../../containers/Nav3";
 
 export default class RedigerRetour extends Component {
     constructor(props) {
@@ -255,7 +255,7 @@ export default class RedigerRetour extends Component {
 
                     </div>
 
-                    <Nav1/>
+                    <Nav3/>
 
                 </div>
 

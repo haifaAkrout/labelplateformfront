@@ -6,7 +6,7 @@ import axios from "axios";
 import logo from './logo_label.png';
 
 
-class Nav1 extends React.Component {
+class Nav3 extends React.Component {
     constructor(props) {
         super(props);
 
@@ -22,7 +22,7 @@ class Nav1 extends React.Component {
     }
 
     loadJudges = ()=> {
-        axios.get('https://labelplatform.herokuapp.com/sessions').then(res => {
+        axios.get('http://localhost:6003/sessions').then(res => {
 
             this.setState({Sessions: res.data});
         })
@@ -34,7 +34,7 @@ class Nav1 extends React.Component {
 
                 <div className="navbar-header">
                     <a href="/" className="navbar-brand h_108">
-                       
+
                         <div className="brand-title">
                             <img className="logo_h_91 signin_html_wrap btm_0" src={logo} />
                         </div>
@@ -54,21 +54,20 @@ class Nav1 extends React.Component {
                                     <li><a href="/"> <i className="fa fa-home"></i> <span
                                         className="menu-title"> Dashboard </span> </a></li>
 
-                                  
+
                                     <li>
                                         <a href="#">
                                             <i className="fa fa-th"></i>
                                             <span className="menu-title">
-                                               Judges Management
+                                               Second Tour
                                             </span>
                                             <i className="arrow"></i>
                                         </a>
 
                                         <ul className="collapse">
-                                            <li><a href="https://labelplateformfront.herokuapp.com/Judges/sendEmail"><i className="fa fa-caret-right"></i>
-                                                Add Judge  </a></li>
-                                            <li><a href="/judges/demandes"><i className="fa fa-caret-right"></i>
-                                                Show Judges  </a></li>
+                                            <li><a href="https://labelplateformfront.herokuapp.com/sessions"><i className="fa fa-caret-right"></i>
+                                                show Sessions </a></li>
+
 
 
 
@@ -87,7 +86,7 @@ class Nav1 extends React.Component {
                                             <li><a href="https://labelplateformfront.herokuapp.com/addSession"><i className="fa fa-caret-right"></i>
                                                 Add Session </a></li>
                                             <li><a href="https://labelplateformfront.herokuapp.com/Sessions2"><i className="fa fa-caret-right"></i>
-                                             Show Sessions  </a></li>
+                                                Show Sessions  </a></li>
 
 
 
@@ -97,13 +96,13 @@ class Nav1 extends React.Component {
                                         <a href="#">
                                             <i className="fa fa-th"></i>
                                             <span className="menu-title">
-                                             Questions Management
+                                            Third Tour
                                             </span>
                                             <i className="arrow"></i>
                                         </a>
 
                                         <ul className="collapse">
-                                            <li><a href="https://labelplateformfront.herokuapp.com//addQuestion"><i className="fa fa-caret-right"></i>
+                                            <li><a href="https://labelplateformfront.herokuapp.com/addQuestion"><i className="fa fa-caret-right"></i>
                                                 Add Question </a></li>
 
 
@@ -114,7 +113,7 @@ class Nav1 extends React.Component {
 
 
 
-                                     <li><a href="/logout"> <i className="fa fa-sign-out"></i> <span
+                                    <li><a href="/logout"> <i className="fa fa-sign-out"></i> <span
                                         className="menu-title"> Logout </span> </a></li>
 
 
@@ -128,7 +127,7 @@ class Nav1 extends React.Component {
 
                                 </ul>
 
-                                
+
 
                             </div>
                         </div>
@@ -148,4 +147,4 @@ class Nav1 extends React.Component {
 }
 
 
-export default Nav1;
+export default Nav3;
