@@ -4,7 +4,7 @@ import Header from '../../containers/Header.js';
 import ContentContainer from '../../containers/ContentContainer';
 import Nav2 from '../../containers/Nav2.js';
 
-export default class Dashboard extends Component{
+export default class DashboardJudge extends Component{
 
     render(){
         return (

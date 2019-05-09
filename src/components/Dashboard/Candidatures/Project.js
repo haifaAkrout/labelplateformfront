@@ -5,7 +5,7 @@ import 'react-notifications/lib/notifications.css';
 import axios from "axios";
 import {NotificationContainer, NotificationManager} from 'react-notifications';
 import {
-    addCompte,
+    addCompte, setCurrentUser,
 
 } from "../../../store/actions";
 import Header from '../../../containers/Header.js';
@@ -16,6 +16,7 @@ import logo from "../../login/logo_label_blanc.png";
 
 import Header2 from "../../Front/front2";
 import {Link} from "react-router-dom";
+import jwt_decode from "jwt-decode";
 
 class Project extends Component{
 
@@ -29,6 +30,7 @@ class Project extends Component{
             Response1:'',
             Response2:'',
             createdBy:'',
+            idCandidat:'',
 
 
 
@@ -39,6 +41,18 @@ class Project extends Component{
         this.handleResponse2Change = this.handleResponse2Change.bind(this);
 
     };
+    componentDidMount() {
+
+
+        console.log(localStorage.getItem('jwtToken'));
+        //   setAuthToken(localStorage.getItem("token"));
+        const decoded = jwt_decode(localStorage.getItem('jwtToken'));
+        const user1 =setCurrentUser(decoded)
+        console.log(user1.payload.id)
+        this.state.idCandidat=user1.payload.id;
+        this.loadJudges();
+
+    }
 
     handleNameChange (evt) {
         this.setState({ Name: evt.target.value });
@@ -59,7 +73,7 @@ class Project extends Component{
             Name: this.state.Name,
             Response2: this.state.Response2,
             Response1: this.state.Response1,
-            createdBy: "5cd2be6d53a4e101c8942f12",
+            createdBy: this.state.idCandidat,
 
         })
             .then(function (response) {

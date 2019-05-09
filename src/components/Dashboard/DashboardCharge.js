@@ -3,9 +3,9 @@ import React, { Component, Suspense } from 'react';
 import Nav1 from '../../containers/Nav1.js';
 import Header from '../../containers/Header.js';
 import ContentContainer from '../../containers/ContentContainer';
-import Nav from '../../containers/Nav.js';
+import Nav3 from '../../containers/Nav3.js';
 
-export default class Dashboard extends Component{
+export default class DashboardCharge extends Component{
 
     render(){
         return (
@@ -18,7 +18,7 @@ export default class Dashboard extends Component{
                 <div className="boxed">
                 <ContentContainer/>
 
-             <Nav1/>
+             <Nav3/>
 
                 </div>
 
