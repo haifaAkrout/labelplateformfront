@@ -38,7 +38,7 @@ export default class EditMember extends Component{
         console.log("id membre mel liste")
         console.log(idMembre)
 
-        axios.get(`http://localhost:6003/members/findById/`+idMembre)
+        axios.get(`https://labelplatform.herokuapp.com/members/findById/`+idMembre)
             .then(response => {
                 this.setState({
                     image: response.data.data.image,
@@ -116,7 +116,7 @@ handleBioChange (evt) {
                 'content-type': 'multipart/form-data'
             }
         };
-        axios.put('http://localhost:6003/members/editMember/'+idSession+'/'+idProjet+'/'+idMembre, formData,config
+        axios.put('https://labelplatform.herokuapp.com/members/editMember/'+idSession+'/'+idProjet+'/'+idMembre, formData,config
         ).then(res=>{console.log(res);
             console.log(res.data)})
 

@@ -55,7 +55,7 @@ class addSession extends Component{
         event.preventDefault()
         const data = this.state
         console.log(data)
-        axios.post('http://localhost:6003/sessionsWij/addSession', {
+        axios.post('https://labelplatform.herokuapp.com/sessionsWij/addSession', {
             Name: this.state.Name,
             Comment: this.state.Comment,
             StartDate: this.state.from,

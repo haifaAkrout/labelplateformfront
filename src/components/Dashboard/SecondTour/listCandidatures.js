@@ -38,7 +38,7 @@ export  default  class listCandidatures extends React.Component{
 
     componentDidMount() {
         const {id1}=this.props.match.params
-        axios.get('http://localhost:6003/candidatures/'+id1).then(res=>{
+        axios.get('https://labelplatform.herokuapp.com/candidatures/'+id1).then(res=>{
             console.log(res.data.Project)
             this.setState({SessionId:res.data._id});
             this.setState({NomSession:res.data.Name});

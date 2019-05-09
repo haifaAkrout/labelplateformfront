@@ -74,7 +74,7 @@ class addCompte1 extends Component{
 
         }
         event.preventDefault();
-        axios.post('http://localhost:6003/judges/registerCandidat',charge
+        axios.post('https://labelplatform.herokuapp.com/judges/registerCandidat',charge
         ).then(res=>{console.log(res);
             console.log(res.data)})
        }

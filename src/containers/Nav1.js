@@ -22,7 +22,7 @@ class Nav1 extends React.Component {
     }
 
     loadJudges = ()=> {
-        axios.get('http://localhost:6003/sessions').then(res => {
+        axios.get('https://labelplatform.herokuapp.com/sessions').then(res => {
 
             this.setState({Sessions: res.data});
         })

@@ -61,7 +61,7 @@ export const accepterJudge= (JudgeId,judge) => {
 };
 export const refuserJudge= (JudgeId) => {
     return async dispatch => {
-        const response = axios.put('http://localhost:6003/judges/refuse/'+JudgeId
+        const response = axios.put('https://labelplatform.herokuapp.com/judges/refuse/'+JudgeId
         ).then(res=>{console.log(res);
             console.log(res.data)})
 
@@ -75,7 +75,7 @@ export const refuserJudge= (JudgeId) => {
 };
 export const enregistrerBrouillonJudge= (idJudge,idCandidature,Review) => {
     return async dispatch => {
-        const response = axios.post('http://localhost:6003/responsesJudges/'+idJudge+'/'+idCandidature+'/addAvis',Review).then(res=>{console.log(res);
+        const response = axios.post('https://labelplatform.herokuapp.com/responsesJudges/'+idJudge+'/'+idCandidature+'/addAvis',Review).then(res=>{console.log(res);
             console.log(res.data)})
 
 
@@ -88,7 +88,7 @@ export const enregistrerBrouillonJudge= (idJudge,idCandidature,Review) => {
 };
 export const refuserCandidature= (idJudge,idCandidature,Review) => {
     return async dispatch => {
-        const response = axios.put('http://localhost:6003/responsesJudges/'+idJudge+'/'+idCandidature+'/refuser',Review).then(res=>{console.log(res);
+        const response = axios.put('https://labelplatform.herokuapp.com/responsesJudges/'+idJudge+'/'+idCandidature+'/refuser',Review).then(res=>{console.log(res);
             console.log(res.data)})
 
 
@@ -101,7 +101,7 @@ export const refuserCandidature= (idJudge,idCandidature,Review) => {
 };
 export const appelerCandidature= (idJudge,idCandidature,numCandidature,Review) => {
     return async dispatch => {
-        const response = axios.put('http://localhost:6003/Candidatures/'+idJudge+'/'+idCandidature+'/'+numCandidature+'/call',Review).then(res=>{console.log(res);
+        const response = axios.put('https://labelplatform.herokuapp.com/Candidatures/'+idJudge+'/'+idCandidature+'/'+numCandidature+'/call',Review).then(res=>{console.log(res);
             console.log(res.data)})
 
 
@@ -114,7 +114,7 @@ export const appelerCandidature= (idJudge,idCandidature,numCandidature,Review) =
 };
 export const loginUser = (judge) => {
     return async dispatch => {
-        axios.post('http://localhost:6003/judges/login', judge)
+        axios.post('https://labelplatform.herokuapp.com/judges/login', judge)
             .then(res => {
                 const {token} = res.data;
                 localStorage.setItem('jwtToken', token);
@@ -141,7 +141,7 @@ export const setCurrentUser = decoded => {
 //affecter charge a un projet
 export const affecterCharge= (idProjet,idCharge) => {
     return async dispatch => {
-        const response = axios.post('http://localhost:6003/projects/affectation/'+idProjet,idCharge
+        const response = axios.post('https://labelplatform.herokuapp.com/projects/affectation/'+idProjet,idCharge
         ).then(res=>{console.log(res);
             console.log(res.data)})
 
@@ -155,7 +155,7 @@ export const affecterCharge= (idProjet,idCharge) => {
 //supprimer membre
 export const SupprimerMembre= (idMember) => {
     return async dispatch => {
-        const response = axios.delete('http://localhost:6003/members/deleteMember/'+idMember
+        const response = axios.delete('https://labelplatform.herokuapp.com/members/deleteMember/'+idMember
         ).then(res=>{console.log(res);
             console.log(res.data)})
 
@@ -171,7 +171,7 @@ export const SupprimerMembre= (idMember) => {
 //Editer membre
 export const editerMembre= (idMembre,membre) => {
     return async dispatch => {
-        const response = axios.put('http://localhost:6003/membres/editMember/'+idMembre,membre
+        const response = axios.put('https://labelplatform.herokuapp.com/membres/editMember/'+idMembre,membre
         ).then(res=>{console.log(res);
             console.log(res.data)})
 

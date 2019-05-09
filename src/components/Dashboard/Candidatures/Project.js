@@ -55,7 +55,7 @@ class Project extends Component{
 
         event.preventDefault()
 
-        axios.post('http://localhost:6003/projects/add/'+id1, {
+        axios.post('https://labelplatform.herokuapp.com/projects/add/'+id1, {
             Name: this.state.Name,
             Response2: this.state.Response2,
             Response1: this.state.Response1,

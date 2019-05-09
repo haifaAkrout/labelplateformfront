@@ -23,7 +23,7 @@ class   Questionnaire extends React.Component{
 
 
     componentDidMount() {
-        axios.get('http://localhost:6003/Judges/listJudges').then(res=>{
+        axios.get('https://labelplatform.herokuapp.com/Judges/listJudges').then(res=>{
             console.log("hhh")
             console.log(res.data);
             this.setState({Judges:res.data});

@@ -20,7 +20,7 @@ export default class listSessions extends React.Component{
 
 
     componentDidMount() {
-        axios.get('http://localhost:6003/sessions')
+        axios.get('https://labelplatform.herokuapp.com/sessions')
             .then(response => {
                 this.setState({sessions: response.data});
                 console.log(response.data)

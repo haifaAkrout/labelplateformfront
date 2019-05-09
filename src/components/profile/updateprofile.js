@@ -115,7 +115,7 @@ handleChange(event) {
 console.log(localStorage.user_id)
 console.log(this.state.username)
 console.log(this.state.firstName)
- axios.post('http://localhost:6003/users/update', {
+ axios.post('https://labelplatform.herokuapp.com/users/update', {
    user_id: localStorage.user_id,
    email:this.state.username , 
    password:this.state.password, 

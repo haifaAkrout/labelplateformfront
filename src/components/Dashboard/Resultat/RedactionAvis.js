@@ -40,7 +40,7 @@ export default class RedactionAvis extends Component {
         const {idCand} = this.props.match.params
         console.log("id candidature")
         console.log(idCand)
-        axios.get('http://localhost:6003/Candidatures/detailsCandidature/'+idCand)
+        axios.get('https://labelplatform.herokuapp.com/Candidatures/detailsCandidature/'+idCand)
             .then(response => {
 
                 this.setState({
@@ -56,7 +56,7 @@ export default class RedactionAvis extends Component {
                 console.log("id charge");
                 console.log(this.state.idCharge)
                 //find charge
-                axios.get('http://localhost:6003/sessions/charge/'+this.state.idCharge)
+                axios.get('https://labelplatform.herokuapp.com/sessions/charge/'+this.state.idCharge)
                     .then(responsec => {
 
                         this.setState({
@@ -66,7 +66,7 @@ export default class RedactionAvis extends Component {
                         });
                         console.log("id review");
                         console.log(responsec.data.review);
-                        axios.get('http://localhost:6003/reviewC/findById/'+ responsec.data.review)
+                        axios.get('https://labelplatform.herokuapp.com/reviewC/findById/'+ responsec.data.review)
                             .then(response => {
 
                                 this.setState({
@@ -106,14 +106,14 @@ export default class RedactionAvis extends Component {
                 cause:this.state.refus,
                 commentaire:this.state.commentaire
             }
-            axios.post('http://localhost:6003/avis/addAvis/'+this.state.idCharge,avis
+            axios.post('https://labelplatform.herokuapp.com/avis/addAvis/'+this.state.idCharge,avis
             ).then(res=>{console.log(res);
                 console.log(res.data)})
 
             const candidature={
                 Status:"2eme_tour_en_instance"
             }
-            axios.put('http://localhost:6003/reviewC//updateCandidatureByCand/'+idCand,candidature
+            axios.put('https://labelplatform.herokuapp.com/reviewC//updateCandidatureByCand/'+idCand,candidature
             ).then(res=>{console.log(res);
                 console.log(res.data)})
         }else
@@ -122,14 +122,14 @@ export default class RedactionAvis extends Component {
             const avis = {
                 commentaire:this.state.commentaire
             }
-            axios.post('http://localhost:6003/avis/add/'+this.state.idCharge,avis
+            axios.post('https://labelplatform.herokuapp.com/avis/add/'+this.state.idCharge,avis
             ).then(res=>{console.log(res);
                 console.log(res.data)})
 
             const candidature={
                 Status:"2eme_tour"
             }
-            axios.put('http://localhost:6003/reviewC//updateCandidatureByCand/'+idCand,candidature
+            axios.put('https://labelplatform.herokuapp.com/reviewC//updateCandidatureByCand/'+idCand,candidature
             ).then(res=>{console.log(res);
                 console.log(res.data)})
         }

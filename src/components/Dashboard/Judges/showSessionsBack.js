@@ -34,7 +34,7 @@ class showSessionsBack extends Component{
 
     };
     componentDidMount(){
-        axios.get(`http://localhost:6003/sessionsWij/getSession`)
+        axios.get(`https://labelplatform.herokuapp.com/sessionsWij/getSession`)
             .then(response => {
                 this.setState({ session: response.data });
                 console.log(response.data)
@@ -44,7 +44,7 @@ class showSessionsBack extends Component{
     handleclick(id){
 
 
-        axios.delete('http://localhost:6003/sessionsWij/del/'+id
+        axios.delete('https://labelplatform.herokuapp.com/sessionsWij/del/'+id
         ).then((res)=>{
 
             console.log(res.data)

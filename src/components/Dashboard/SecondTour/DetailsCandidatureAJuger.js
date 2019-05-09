@@ -107,7 +107,7 @@ console.log(this.state.currentJudge.payload.id)
             const id4=this.state.id3;
 
             this.props.refuserCandidature(this.state.currentJudge.payload.id,id4,Review)
-             axios.post('http://localhost:6003/candidatures/call/'+55626214).then(res=>{
+             axios.post('https://labelplatform.herokuapp.com/candidatures/call/'+55626214).then(res=>{
                  console.log(res.data)
 
 

@@ -38,7 +38,7 @@ const AVG = 1;
     }
 
     componentDidMount() {
-        axios.get('http://localhost:6003/Questionnaire').then(res => {
+        axios.get('https://labelplatform.herokuapp.com/Questionnaire').then(res => {
 
             console.log(res.data);
             this.setState({Questions: res.data})

@@ -120,7 +120,7 @@ reset(){
               console.log(this.state.firstName)
               console.log(this.state.lastName)
 
-            axios.post('http://localhost:6003/signin/candidat', {email:this.state.username , password:this.state.password, firstName:this.state.firstName, lastName: this.state.lastName})
+            axios.post('https://labelplatform.herokuapp.com/signin/candidat', {email:this.state.username , password:this.state.password, firstName:this.state.firstName, lastName: this.state.lastName})
                 .then(res => {
                    //  const {token} = res.data;
                    //  localStorage.setItem('jwtToken', token);
@@ -177,7 +177,7 @@ reset(){
           <div className="login-form">
             <div className="sign-in-htm">
               <div className="text-center social-btn" hidden='true'>
-                <a href="http://localhost:6003/auth/facebook" className="btn btn-primary btn-block"><i className="fa fa-facebook" /> Sign up with <b>Facebook</b></a>
+                <a href="https://labelplatform.herokuapp.com/auth/facebook" className="btn btn-primary btn-block"><i className="fa fa-facebook" /> Sign up with <b>Facebook</b></a>
                 <a href="#" className="btn btn-danger btn-block"><i className="fa fa-google" /> Sign up with <b>Google</b></a>
               </div>
               <div className="hr2" />

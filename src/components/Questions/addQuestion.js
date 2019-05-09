@@ -82,7 +82,7 @@ class addQuestion extends Component{
 
         }
         event.preventDefault();
-        axios.post('http://localhost:6003/questionnaire/add',Question
+        axios.post('https://labelplatform.herokuapp.com/questionnaire/add',Question
         ).then(res=>{console.log(res);
             console.log(res.data)})
         window.location.reload();

@@ -95,14 +95,14 @@ export default class RedigerRetour extends Component {
                 cause: ''
 
             }
-            axios.put('http://localhost:6003/reviewC/updateAvisCharge/'+this.state.idProjet+'/'+this.state.idCharge,charge
+            axios.put('https://labelplatform.herokuapp.com/reviewC/updateAvisCharge/'+this.state.idProjet+'/'+this.state.idCharge,charge
             ).then(res=>{console.log(res);
                 console.log(res.data)})
 
             const candidature={
                 Status:this.state.Avis
             }
-            axios.put('http://localhost:6003/reviewC//updateCandidature/'+this.state.idProjet,candidature
+            axios.put('https://labelplatform.herokuapp.com/reviewC//updateCandidature/'+this.state.idProjet,candidature
             ).then(res=>{console.log(res);
                 console.log(res.data)})
         }
@@ -115,14 +115,14 @@ export default class RedigerRetour extends Component {
                 cause: refus
 
             }
-            axios.put('http://localhost:6003/reviewC/updateAvisCharge/'+this.state.idProjet+'/'+this.state.idCharge,charge
+            axios.put('https://labelplatform.herokuapp.com/reviewC/updateAvisCharge/'+this.state.idProjet+'/'+this.state.idCharge,charge
             ).then(res=>{console.log(res);
                 console.log(res.data)})
 
             const candidature={
                 Status:this.state.Avis
             }
-            axios.put('http://localhost:6003/reviewC//updateCandidature/'+this.state.idProjet,candidature
+            axios.put('https://labelplatform.herokuapp.com/reviewC//updateCandidature/'+this.state.idProjet,candidature
             ).then(res=>{console.log(res);
                 console.log(res.data)})
         }

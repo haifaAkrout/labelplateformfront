@@ -62,7 +62,7 @@ export default class ListeEquipe extends React.Component {
 
     supprimerMembre = (idSession, idProjet, idMember) => {
 
-        axios.get('http://localhost:6003/members/deleteMember/' + idSession + '/' + idProjet + '/' + idMember
+        axios.get('https://labelplatform.herokuapp.com/members/deleteMember/' + idSession + '/' + idProjet + '/' + idMember
         ).then((response) => {
             console.log(response)
             console.log("xasa");
@@ -77,7 +77,7 @@ export default class ListeEquipe extends React.Component {
 
     definirLeader(idSession, idProjet, idMember) {
         console.log({idSession, idProjet, idMember})
-        axios.put('http://localhost:6003/members/leader/' + idSession + '/' + idProjet + '/' + idMember).then(
+        axios.put('https://labelplatform.herokuapp.com/members/leader/' + idSession + '/' + idProjet + '/' + idMember).then(
         ).then((response) => {
             console.log(response)
             console.log("definir comme leader");
