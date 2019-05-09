@@ -146,6 +146,7 @@ class DetailsCandidatureAJuger extends React.Component{
             }
 
             const id4=this.state.id3;
+            console.log(this.state.currentJudge.payload.id);
             this.props.appelerCandidature(this.state.currentJudge.payload.id,id4,12063505763,Review)
 
         }
