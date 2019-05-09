@@ -55,7 +55,6 @@ class ListeProjetByIDSessions extends Component {
                     projets:response.data.Project,
                     idProjet : response.data.Project._id}
                     );
-                console.log(response.data);
                 console.log(response.data.Project)
                 console.log(response.data.Name)
                 console.log(response.data._id)
@@ -110,7 +109,7 @@ class ListeProjetByIDSessions extends Component {
                     <div id="content-container">
                         <ContentContainer/>
 
-                        <div className="panel td">
+                        <div className="panel">
 
                             <div className="panel-body">
 
@@ -124,9 +123,9 @@ class ListeProjetByIDSessions extends Component {
 
 
                                 </div>
-                                <Nav tabs id={"nav"} >
+                                <Nav tabs id={"nav"}>
                                     <NavItem>
-                                        <NavLink className="td"
+                                        <NavLink
                                             className={classnames({ active: this.state.activeTab === '1' })}
                                             onClick={() => { this.toggle('1'); }}
                                         >
@@ -134,7 +133,7 @@ class ListeProjetByIDSessions extends Component {
                                         </NavLink>
                                     </NavItem>
                                     <NavItem>
-                                        <NavLink className="td"
+                                        <NavLink
                                             className={classnames({ active: this.state.activeTab === '2' })}
                                             onClick={() => { this.toggle('2'); }}
                                         >
@@ -142,7 +141,7 @@ class ListeProjetByIDSessions extends Component {
                                         </NavLink>
                                     </NavItem>
                                     <NavItem>
-                                        <NavLink className="td"
+                                        <NavLink
                                             className={classnames({ active: this.state.activeTab === '3' })}
                                             onClick={() => { this.toggle('3'); }}
                                         >
@@ -150,7 +149,7 @@ class ListeProjetByIDSessions extends Component {
                                         </NavLink>
                                     </NavItem>
                                 </Nav>
-                                <div className="panel-body" className="td">
+                                <div className="panel-body">
                                     <TabContent activeTab={this.state.activeTab}  id={"table"}>
                                         <TabPane tabId="1">
                                             <Row>
