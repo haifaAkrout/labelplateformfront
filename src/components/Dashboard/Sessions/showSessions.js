@@ -26,7 +26,7 @@ session:[]
 
 
     componentDidMount(){
-        axios.get(`http://localhost:6003/sessionsWij/getSession`)
+        axios.get(`https://labelplatform.herokuapp.com/sessionsWij/getSession`)
             .then(response => {
                 this.setState({ session: response.data });
                 console.log(response.data)

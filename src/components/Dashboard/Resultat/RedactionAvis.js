@@ -113,7 +113,7 @@ export default class RedactionAvis extends Component {
             const candidature={
                 Status:"2eme_tour_en_instance"
             }
-            axios.put('https://labelplatform.herokuapp.com/reviewC//updateCandidatureByCand/'+idCand,candidature
+            axios.put('https://labelplatform.herokuapp.com/reviewC/updateCandidatureByCand/'+idCand,candidature
             ).then(res=>{console.log(res);
                 console.log(res.data)})
         }else
@@ -129,7 +129,7 @@ export default class RedactionAvis extends Component {
             const candidature={
                 Status:"2eme_tour"
             }
-            axios.put('https://labelplatform.herokuapp.com/reviewC//updateCandidatureByCand/'+idCand,candidature
+            axios.put('https://labelplatform.herokuapp.com/reviewC/updateCandidatureByCand/'+idCand,candidature
             ).then(res=>{console.log(res);
                 console.log(res.data)})
         }
