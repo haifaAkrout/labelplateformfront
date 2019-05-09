@@ -82,7 +82,7 @@ export  default  class listCandidatures extends React.Component{
                             </div>
 
 
-                            <center>
+                            <center className="td">
                                 <center><span>{Sessions.length}projects %</span></center>
                                 <Progress color="#31b0d5" value={Sessions.length}/>
                             </center>
@@ -114,7 +114,7 @@ export  default  class listCandidatures extends React.Component{
                                     <TabPane tabId="1">
                                         <center>
 
-                                            <Nav tabs>
+                                            <Nav tabs className="td">
                                                 <NavItem>
                                                     <NavLink
                                                         className={classnames({ active: this.state.activeTab === '1' })}
@@ -265,7 +265,7 @@ export  default  class listCandidatures extends React.Component{
 
                                         <center>
 
-                                            <Nav tabs>
+                                            <Nav tabs className="td">
                                                 <NavItem>
                                                     <NavLink
                                                         className={classnames({ active: this.state.activeTab === '1' })}
@@ -361,7 +361,7 @@ export  default  class listCandidatures extends React.Component{
                                     <TabPane tabId="5">
                                         <center>
 
-                                            <Nav tabs>
+                                            <Nav tabs className="td">
                                                 <NavItem>
                                                     <NavLink
                                                         className={classnames({ active: this.state.activeTab === '1' })}
@@ -459,7 +459,7 @@ export  default  class listCandidatures extends React.Component{
                                     <TabPane tabId="4">
                                         <center>
 
-                                            <Nav tabs>
+                                            <Nav tabs className="td">
                                                 <NavItem>
                                                     <NavLink
                                                         className={classnames({ active: this.state.activeTab === '1' })}

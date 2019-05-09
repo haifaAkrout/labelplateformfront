@@ -61,7 +61,7 @@ class DetailsCandidatureAJuger extends React.Component{
         this.state.currentJudge =setCurrentUser(decoded)
         console.log(this.state.currentJudge.payload.id)
         const {id2}=this.props.match.params
-        axios.get('http://https://labelplatform.herokuapp.com//candidatures/'+id2).then(res=>{
+        axios.get('http://https://labelplatform.herokuapp.com/candidatures/'+id2).then(res=>{
             console.log(res.data.Project)
             this.setState({NomSession:res.data.Name});
             this.setState({Projects:res.data.Project});
@@ -107,7 +107,7 @@ class DetailsCandidatureAJuger extends React.Component{
             const id4=this.state.id3;
 
             this.props.refuserCandidature(this.state.currentJudge.payload.id,id4,Review)
-            axios.post('http://https://labelplatform.herokuapp.com//candidatures/call/'+55626214).then(res=>{
+            axios.post('http://https://labelplatform.herokuapp.com/candidatures/call/'+55626214).then(res=>{
                 console.log(res.data)
 
 
