@@ -54,9 +54,9 @@ export  default  class Resultat extends React.Component{
 
 
     componentDidMount=event=> {
-        // const {idSession} = this.props.match.params
-        // console.log(idSession)
-        axios.get(`https://labelplatform.herokuapp.com/sessions/resultat/5cba2219bb0f481fe0e48b36`)
+        const {idSession} = this.props.match.params
+        console.log(idSession)
+        axios.get(`https://labelplatform.herokuapp.com/sessions/resultat/`+idSession)
             .then(response => {
                 this.setState({
                         resultats: response.data.Project,

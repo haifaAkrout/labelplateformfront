@@ -121,7 +121,7 @@ class App extends Component {
               <Route path="/members/addMember/:idSession/:idProjet" exact component={AddMember} />
               <Route path="/projects/ListeMembres/:idSessionP/:idProjet" exact component={ListEquipe} />
               <Route path="/members/editMember/:idSession/:idProjet/:idMembre" exact component={EditMember} />
-              <Route path="/resultat/" exact component={Resultat} />
+              <Route path="/resultat/:idSession" exact component={Resultat} />
               <Route path="/Candidatures/detailsCandidature/:idCand" exact component={RedactionAvis} />
        
                
