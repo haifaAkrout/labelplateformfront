@@ -80,7 +80,7 @@ export default class DetailsProjetParIdSesIdProjet extends Component {
             .then(response => {
 
                 this.setState({
-                    detailsprojets:response.data.data.questionnaire,
+                    //detailsprojets:response.data.data.questionnaire,
                     idProjet:response.data.data._id,
                     NomSession:response.data.NomSession,
                     DateSession:response.data.StartDate,
@@ -312,17 +312,17 @@ export default class DetailsProjetParIdSesIdProjet extends Component {
 
                                 </div>
 
-                                <div className="panel-heading" id={"questionnaire"}>
-                                    {
-                                        this.state.detailsprojets.map(function(proj, idx){
-                                            return (
-                                                <div key={idx} className="panel-heading">
-                                                    <label>{proj.text}</label>
-                                                    <p>{proj.responses[0].text}</p>
-                                                </div>
-                                            )
-                                        }.bind(this))}
-                                </div>
+                                {/*<div className="panel-heading" id={"questionnaire"}>*/}
+                                    {/*{*/}
+                                        {/*this.state.detailsprojets.map(function(proj, idx){*/}
+                                            {/*return (*/}
+                                                {/*<div key={idx} className="panel-heading">*/}
+                                                    {/*<label>{proj.text}</label>*/}
+                                                    {/*<p>{proj.responses[0].text}</p>*/}
+                                                {/*</div>*/}
+                                            {/*)*/}
+                                        {/*}.bind(this))}*/}
+                                {/*</div>*/}
 
                                 <form className="form-group"  id={"formulaire"}
                                       onSubmit={this.submitForm.bind(this)}>
