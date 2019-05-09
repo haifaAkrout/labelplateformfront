@@ -67,7 +67,7 @@ export  default  class listCandidatures extends React.Component{
 
                         <ContentContainer/>
 
-                        <div className="panel">
+                        <div className="panel" className="td">
                             <div className="panel-heading">
 
 
@@ -90,7 +90,7 @@ export  default  class listCandidatures extends React.Component{
 
 
 
-                            <div className="panel-body">
+                            <div className="panel-body" className="td">
                                 <Nav tabs>
                                     <NavItem>
                                         <NavLink
@@ -168,7 +168,7 @@ export  default  class listCandidatures extends React.Component{
                                             <tbody>
                                             {Sessions.map(d=> {
 
-                                                    if (d.createdBy.Status === "non Traité")
+                                                    if (d.createdBy.Status === "non Traitée")
                                                         return (
 
                                                             <tr key={d._id}>
