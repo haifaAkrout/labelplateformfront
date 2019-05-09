@@ -67,7 +67,7 @@ export  default  class listCandidatures extends React.Component{
 
                         <ContentContainer/>
 
-                        <div className="panel" className="td">
+                        <div className="panel">
                             <div className="panel-heading">
 
 
@@ -110,7 +110,7 @@ export  default  class listCandidatures extends React.Component{
                                     </NavItem>
                                 </Nav>
 
-                                <TabContent activeTab={this.state.activeTab}>
+                                <TabContent activeTab={this.state.activeTab}  className="td">
                                     <TabPane tabId="1">
                                         <center>
 
@@ -150,7 +150,7 @@ export  default  class listCandidatures extends React.Component{
                                             </Nav></center>
 
                                         <table id="demo-foo-filtering"
-                                               className="table table-bordered table-hover toggle-circle" data-page-size="7">
+                                               className="table table-bordered table-hover toggle-circle td" data-page-size="7">
 
                                             <thead>
                                             <tr>
@@ -215,7 +215,7 @@ export  default  class listCandidatures extends React.Component{
                                         <div className="panel-body">
 
                                             <table id="demo-foo-filtering"
-                                                   className="table table-bordered table-hover toggle-circle" data-page-size="7">
+                                                   className="table table-bordered table-hover toggle-circle td" data-page-size="7">
 
                                                 <thead>
                                                 <tr>
