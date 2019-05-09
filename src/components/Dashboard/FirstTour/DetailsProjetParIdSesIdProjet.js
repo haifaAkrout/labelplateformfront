@@ -1,287 +1,108 @@
 import React, { Component } from 'react';
 import Moment from 'moment';
+
 import axios from 'axios'
 import {Link} from "react-router-dom";
 import Header from "../../../containers/Header";
 import ContentContainer from "../../../containers/ContentContainer";
-import Nav3 from "../../../containers/Nav3";
-import {Alert,Input,Button, Fade} from "reactstrap";
-export default class DetailsProjetParIdSesIdProjet extends Component {
+import Nav1 from "../../../containers/Nav1";
+import {connect} from "react-redux";
+import { Table,TabContent, TabPane, NavItem, NavLink, Nav,Card, Button, CardTitle, CardText, Row, Col } from 'reactstrap';
+import classnames from 'classnames';
+import {
+    affecterCharge,
+
+} from "../../../store/actions";
+
+class ListeProjetByIDSessions extends Component {
+
     constructor(props) {
         super(props);
         this.state = {
-            active:false,
-            detailsprojets: [],
+            activeTab: '1',
+            projets: [],
             charges:[],
             NomSession:'',
             DateSession:'',
-            NomProjet:'',
-            idSessionBack:'',
-            check1:true,
-            check2:false,
-            color_pwd_input:'',
-            checked: false, checked2: false,
-            dossierValide:null,
-            dossierInvalide: false,
-            Avis:'',
-            refus:'',
-            idProjet:'',
+            idSess:'',
             idCharge:'',
-            valuevalide:'',
-            valueInvalide:'',
-            commentaire:'',
-            refus1:'',refus2:'',
-            buttonValue: 0,
-            idCand:'',
-            status:''
-
-
+            idProjet:'',
+            chargeSelected:''
         };
 
+        this.toggle = this.toggle.bind(this);
+
+
     }
 
 
-
-    handleCommentaireChange=(e)=>{
-        this.setState({commentaire :e.target.value})
+    toggle(tab) {
+        if (this.state.activeTab !== tab) {
+            this.setState({
+                activeTab: tab
+            });
+        }
     }
-
-    toggleDossier = (e)=>{
-        const checked = e.currentTarget.checked
-        const name = e.currentTarget.name
-        const newVal = name==="valide" && checked ? true : name ==='invalide' && checked ? false : null
-        this.setState( prevState=>({
-            dossierValide : newVal
-        }))
-    }
-
-
-    handleAvis=(e)=>{
-        this.setState( { Avis:e.target.value});
-
-    }
-    handleRefus1=({target})=>{
-        this.setState(prevState=>({refus1:prevState.refus1 ? null : target.value}))
-    }
-    handleRefus2=({target})=>{
-        this.setState(prevState=>({refus2:prevState.refus2 ? null : target.value}))
-    }
-
-    handleChangeModel(event) {
-        this.setState({buttonValue: event.target.value});
+    handleChange= (e) => {
+        this.setState({ chargeSelected : e.target.value });
     }
     componentDidMount() {
-        const {idSessionP} = this.props.match.params
-        const {idProjet} = this.props.match.params
-        console.log("id session")
-        console.log(idSessionP)
-        console.log(idProjet)
-        axios.get('https://labelplatform.herokuapp.com/projects/detailsProjets/'+idSessionP+'/'+idProjet)
+        const {idSession} = this.props.match.params
+        console.log(idSession)
+        axios.get(`http://localhost:6003/sessions/listeProjetsparIdSes/`+idSession)
             .then(response => {
-
                 this.setState({
-                    detailsprojets:response.data.data.questionnaire,
-                    idProjet:response.data.data._id,
-                    NomSession:response.data.NomSession,
+                    projets:response.data.Project,
+                    idProjet : response.data.Project._id}
+                );
+                console.log(response.data.Project)
+                console.log(response.data.Name)
+                console.log(response.data._id)
+                this.setState({
+                    NomSession:response.data.Name,
                     DateSession:response.data.StartDate,
-                    NomProjet:response.data.data.Name,
-                    idCharge:response.data.data.createdBy.charges,
-                    idSessionBack: response.data.idSessionBack,
-                    idCand:response.data.createdBy
-                });
-                console.log(response.data.data.questionnaire);
-                console.log(response.data.NomSession);
-                console.log(response.data.idSessionBack)
-
+                    idSess: response.data._id});
             })
             .catch(function (error) {
                 console.log(error);
             })
 
+        //afficher liste de chargees
+        axios.get(`http://localhost:6003/sessions/charges/`)
+            .then(response => {
+                this.setState({
+                    charges: response.data,
+                    idCharge:response.data._id
+                });
+                console.log(response.data)
 
-    }
-
-    updateAvisChargeEninstance=(e)=>{
-        // e.preventDefault();
-        var idP=this.state.idProjet;
-        var idC=this.state.idCharge;
-        console.log("id projet ");
-        console.log(idP);
-        console.log("id charge");
-        console.log(idC);
-
-        console.log(this.state.commentaire);
-        console.log(this.state.dossierValide);
-        console.log(this.state.Avis);
-        if (this.state.dossierValide) {
-            console.log("dossier valide");
-            const charge = {
-                text: this.state.commentaire,
-                estValide: this.state.dossierValide,
-                cause: ''
-
-            }
-            axios.put('https://labelplatform.herokuapp.com/reviewC/updateAvisCharge/' + idP + '/' + idC, charge
-            ).then(res => {
-                console.log(res)
-                console.log(res.data)
             })
-            const instance=this.state.Avis+'_en_instance';
-            const candidature = {
-                Status: instance
-            }
-            axios.put('https://labelplatform.herokuapp.com/reviewC/updateCandidature/' + idP, candidature
-            ).then(res => {
-                console.log(res);
-                console.log(res.data)
+            .catch(function (error) {
+                console.log(error);
             })
-        }
-        else {
-            const refus = this.state.refus1 + '' + this.state.refus2;
-            console.log("commentaire");
-            console.log(this.state.commentaire);
-            const charge = {
-                text: this.state.commentaire,
-                estValide: this.state.dossierValide,
-                cause: refus
-            };
-            axios.put('https://labelplatform.herokuapp.com/reviewC/updateAvisCharge/' + idP + '/' + idC, charge
-            ).then(res => {
-                console.log(res);
-                console.log(res.data)
-            });
-
-            const instance=this.state.Avis+'_en_instance';
-            const candidature = {
-                Status: instance
-            }
-            axios.put('https://labelplatform.herokuapp.com/reviewC/updateCandidature/' + this.state.idProjet, candidature
-            ).then(res => {
-                console.log(res);
-                console.log(res.data)
-            })
-        }
-
-
-    }
-
-    updateAvisCharge=(e)=>{
-        // e.preventDefault();
-        var idP=this.state.idProjet;
-        var idC=this.state.idCharge;
-        console.log("id projet ");
-        console.log(idP);
-        console.log("id charge");
-        console.log(idC);
-
-        console.log(this.state.commentaire);
-        console.log(this.state.dossierValide);
-        console.log(this.state.Avis);
-        if (this.state.dossierValide) {
-            console.log("dossier valide");
-            const charge = {
-                text: this.state.commentaire,
-                estValide: this.state.dossierValide,
-                cause: ''
-
-            }
-            axios.put('https://labelplatform.herokuapp.com/reviewC/updateAvisCharge/' + idP + '/' + idC, charge
-            ).then(res => {
-                console.log(res)
-                console.log(res.data)
-            })
-
-            const candidature = {
-                Status: this.state.Avis
-            }
-            axios.put('https://labelplatform.herokuapp.com/reviewC/updateCandidature/' + idP, candidature
-            ).then(res => {
-                console.log(res);
-                console.log(res.data)
-            })
-        }
-        else {
-            const refus = this.state.refus1 + '' + this.state.refus2;
-            console.log("commentaire");
-            console.log(this.state.commentaire);
-            const charge = {
-                text: this.state.commentaire,
-                estValide: this.state.dossierValide,
-                cause: refus
-            };
-            axios.put('https://labelplatform.herokuapp.com/reviewC/updateAvisCharge/' + idP + '/' + idC, charge
-            ).then(res => {
-                console.log(res);
-                console.log(res.data)
-            });
-
-
-            const candidature = {
-                Status: this.state.Avis
-            };
-            axios.put('https://labelplatform.herokuapp.com/reviewC/updateCandidature/' + this.state.idProjet, candidature
-            ).then(res => {
-                console.log(res);
-                console.log(res.data)
-            })
-        }
-
-    }
-
-
-    submitForm=(e)=>{
-        //  e.preventDefault();
-        //console("formulaire");
-    }
-    test = (e) => {
-
-        console.log("commentaire");
-        console.log(this.state.dossierValide);
-        if(this.state.dossierValide == null ){
-            console.log("dossier not checked");
-            alert("dossier not checked");
-            // this.setState({color_user_input: '#ff0000ba'});
-
-
-        }
-        else if(this.state.Avis ==''){
-            console.log("avis not checked");
-            alert("please choose one");
-        }
-        else
-        if(this.state.commentaire.length == 0  ){
-            console.log("commentaire vide");
-            alert("add a comment");
-            // this.setState({color_pwd_input: '#ff0000ba'})
-        }
-        else {
-            console.log("result button checked");
-
-            // this.setState({color_pwd_input: 'rgb(39, 129, 42)'})
-            this.setState(prevState=>({active:!prevState.active}));
-
-            this.updateAvisChargeEninstance();
-
-        }
-
-
-
-
-
-
-
     }
 
 
 
 
+    handleClick = (idP,e) => {
 
-    render()
-    {
 
-        return(
+        this.setState({ chargeSelected : e.target.value });
+        console.log("id charge selected")
+        console.log(e.target.value)
+        axios.post('http://localhost:6003/projects/affectation/'+idP+'/'+e.target.value
+        ).then(res=>{
+            console.log(res);
+            console.log(res.data);
+            console.log("affecter charge")})
+    }
 
-            <div id = "container" className = "effect mainnav-sm navbar-fixed mainnav-fixed" >
+    render() {
+        return (
+            <div  id = "container"
+                  className = "effect mainnav-sm navbar-fixed mainnav-fixed" >
+
                 <Header/>
                 <div className="boxed">
 
@@ -291,128 +112,409 @@ export default class DetailsProjetParIdSesIdProjet extends Component {
                         <div className="panel">
 
                             <div className="panel-body">
-                                {
-                                    // this.state.dossierValide == null &&
-                                    <Alert> not checked </Alert>
 
-                                }
-
-                                <div className="panel-heading" id={"div"}>
-                                    <Link to={"/sessions/listeProjetsparIdSes/"+ this.state.idSessionBack }params={{ idSessionP: this.state.idSessionBack}}>
-                                        <label>
-                                            { this.state.NomSession}&nbsp;
-                                            {Moment(this.state.DateSession).format('YYYY')}
-                                        </label>
-                                    </Link>&nbsp;
-                                    &#10132;
-                                    &nbsp;
-                                    <label>
-                                        {this.state.NomProjet}
+                                <div className="panel-heading" id={"divtitle"}>
+                                    <label id={"label1"}>
+                                        {this.state.NomSession} &nbsp;
+                                        <span>
+                                                    {Moment(this.state.DateFinSession).format('YYYY')}
+                                                </span>
                                     </label>
 
+
+                                </div>
+                                <Nav tabs id={"nav"}>
+                                    <NavItem>
+                                        <NavLink
+                                            className={classnames({ active: this.state.activeTab === '1' })}
+                                            onClick={() => { this.toggle('1'); }}
+                                        >
+                                            Candidature à traiter
+                                        </NavLink>
+                                    </NavItem>
+                                    <NavItem>
+                                        <NavLink
+                                            className={classnames({ active: this.state.activeTab === '2' })}
+                                            onClick={() => { this.toggle('2'); }}
+                                        >
+                                            Avis en instance
+                                        </NavLink>
+                                    </NavItem>
+                                    <NavItem>
+                                        <NavLink
+                                            className={classnames({ active: this.state.activeTab === '3' })}
+                                            onClick={() => { this.toggle('3'); }}
+                                        >
+                                            Validation de l'avis
+                                        </NavLink>
+                                    </NavItem>
+                                </Nav>
+                                <div className="panel-body">
+                                    <TabContent activeTab={this.state.activeTab}  id={"table"}>
+                                        <TabPane tabId="1">
+                                            <Row>
+                                                <Col sm="12">
+                                                    <Table striped >
+                                                        <thead>
+                                                        <tr>
+                                                            <th>Type </th>
+                                                            <th>Nom projet</th>
+                                                            <th>Lead </th>
+                                                            <th>Soumis le </th>
+                                                            <th>Charge</th>
+                                                            <th>Action</th>
+                                                        </tr>
+
+                                                        </thead>
+                                                        <tbody>
+                                                        {this.state.projets.map(function(projet, idx){
+                                                            if(
+                                                                projet.createdBy.Status === 'Pas_de_candidature'
+                                                                || projet.createdBy.Status === 'Brouillon'
+                                                                || projet.createdBy.Status === '1er_tour'
+                                                            ) {
+                                                                if(projet.length == 0)
+                                                                {
+                                                                    return (<h1>Cette session n'a aucun projet</h1>
+                                                                    )
+
+
+                                                                }else
+                                                                if(projet.members.length == 0)
+                                                                {
+                                                                    return(<div id={"btnajout"}>
+                                                                        <h1 key={idx}>Ce projet n'a aucun membre</h1>
+                                                                        <Link to={"/members/addMember/"+this.state.idSess+"/"+projet._id}
+                                                                              params={{
+
+                                                                                  idSession: this.state.idSess,
+                                                                                  idProjet: projet._id}}>
+
+                                                                            Ajouter un nouveau membre</Link>
+
+                                                                    </div>)
+                                                                }else
+                                                                if (projet.members[0].Role === 'lead')
+                                                                    return (
+
+                                                                        <tr key={idx}>
+
+                                                                            <td>
+                                                                                {projet.createdBy.TypeLabel.type}
+                                                                            </td>
+                                                                            <td>
+                                                                                {projet.Name}
+                                                                            </td>
+                                                                            <td>
+                                                                                {projet.members[0].FirsName}&nbsp;{projet.members[0].LastName}
+                                                                            </td>
+                                                                            <td>
+                                                                                {Moment(projet.createdBy.TypeLabel.SoumissionDate).format('DD-MM-YYYY')}
+                                                                            </td>
+                                                                            <td>
+                                                                                <form
+                                                                                    className="panel-body form-horizontal">
+
+
+                                                                                    <select id="demo-foo-filter-status"
+                                                                                            className="form-control"
+                                                                                            onChange={this.handleClick.bind(this, projet._id)}>
+                                                                                        <option>choisir charge</option>
+                                                                                        {this.state.charges.map(function (charge, idc) {
+                                                                                            return (
+
+                                                                                                <option
+                                                                                                    value={charge._id}
+                                                                                                    key={idc}>
+                                                                                                    {charge.FirstName}&nbsp;{charge.LastName}
+                                                                                                </option>
+                                                                                            )
+                                                                                        }.bind(this))}
+
+                                                                                    </select>
+
+                                                                                </form>
+
+                                                                            </td>
+
+                                                                            <td>
+                                                                                <Link
+                                                                                    to={"/projects/detailsProjets/" + this.state.idSess + "/" + projet._id}
+                                                                                    params={{
+                                                                                        idSessionP: this.state.idSess,
+                                                                                        idProjet: projet._id
+                                                                                    }}>
+                                                                                    Consulter
+                                                                                </Link>
+                                                                                &nbsp;
+                                                                                &nbsp;
+                                                                                <Link
+                                                                                    to={"/projects/ListeMembres/"+this.state.idSess+"/"+projet._id}
+                                                                                    params={{
+                                                                                        idSessionP: this.state.idSess,
+                                                                                        idProjet: projet._id
+                                                                                    }}
+                                                                                >
+                                                                                    Equipe
+                                                                                </Link>
+                                                                            </td>
+
+
+                                                                        </tr>
+
+                                                                    )
+                                                            }
+
+                                                        }.bind(this))}
+
+
+                                                        </tbody>
+                                                    </Table>
+                                                </Col>
+                                            </Row>
+                                        </TabPane>
+                                        <TabPane tabId="2">
+                                            <Row>
+                                                <Col sm="12">
+                                                    <Table striped >
+                                                        <thead>
+                                                        <tr>
+                                                            <th>Type </th>
+                                                            <th>Nom projet</th>
+                                                            <th>Lead </th>
+                                                            <th>Soumis le </th>
+                                                            <th>Charge</th>
+                                                            <th>Action</th>
+                                                        </tr>
+
+                                                        </thead>
+                                                        <tbody>
+                                                        {this.state.projets.map(function(projet, idx){
+                                                            if(projet.createdBy.Status === '1er_tour_en_instance'
+                                                                || projet.createdBy.Status === 'refusee_premier_tour'
+                                                                || projet.createdBy.Status === '2eme_tour_en_instance')
+                                                            {
+                                                                if(projet.length == 0)
+                                                                {
+                                                                    return (<h1>Cette session n'a aucun projet</h1>)
+                                                                }else
+                                                                if(projet.members.length == 0)
+                                                                {
+                                                                    return(<div id={"btnajout"}>
+                                                                        <h1 key={idx}>Ce projet n'a aucun membre</h1>
+                                                                        <Link to={"/members/addMember/"+this.state.idSess+"/"+projet._id}
+                                                                              params={{
+
+                                                                                  idSession: this.state.idSess,
+                                                                                  idProjet: projet._id}}>
+
+                                                                            Ajouter un nouveau membre</Link>
+
+                                                                    </div>)
+                                                                }else
+                                                                if (projet.members[0].Role === 'lead')
+                                                                    return (
+
+                                                                        <tr key={idx}>
+
+                                                                            <td>
+                                                                                {projet.createdBy.TypeLabel.type}
+                                                                            </td>
+                                                                            <td>
+                                                                                {projet.Name}
+                                                                            </td>
+                                                                            <td>
+                                                                                {projet.members[0].FirsName}&nbsp;{projet.members[0].LastName}
+                                                                            </td>
+                                                                            <td>
+                                                                                {Moment(projet.createdBy.TypeLabel.SoumissionDate).format('DD-MM-YYYY')}
+                                                                            </td>
+                                                                            <td>
+                                                                                <form
+                                                                                    className="panel-body form-horizontal">
+
+
+                                                                                    <select id="demo-foo-filter-status"
+                                                                                            className="form-control"
+                                                                                            onChange={this.handleClick.bind(this, projet._id)}>
+                                                                                        <option>choisir charge</option>
+                                                                                        {this.state.charges.map(function (charge, idc) {
+                                                                                            return (
+
+                                                                                                <option
+                                                                                                    value={charge._id}
+                                                                                                    key={idc}>
+                                                                                                    {charge.FirstName}&nbsp;{charge.LastName}
+                                                                                                </option>
+                                                                                            )
+                                                                                        }.bind(this))}
+
+                                                                                    </select>
+
+
+
+                                                                                </form>
+
+                                                                            </td>
+
+                                                                            <td>
+                                                                                <Link
+                                                                                    to={"/projects/detailsProjets/" + this.state.idSess + "/" + projet._id}
+                                                                                    params={{
+                                                                                        idSessionP: this.state.idSess,
+                                                                                        idProjet: projet._id
+                                                                                    }}>
+                                                                                    Consulter
+                                                                                </Link>
+                                                                                &nbsp;
+                                                                                &nbsp;
+                                                                                <Link
+                                                                                    to={"/projects/ListeMembres/"+this.state.idSess+"/"+projet._id}
+                                                                                    params={{
+                                                                                        idSessionP: this.state.idSess,
+                                                                                        idProjet: projet._id
+                                                                                    }}
+                                                                                >
+                                                                                    Equipe
+                                                                                </Link>
+                                                                            </td>
+
+                                                                        </tr>
+
+                                                                    )
+                                                            }
+
+                                                        }.bind(this))}
+
+
+                                                        </tbody>
+                                                    </Table>
+                                                </Col>
+                                            </Row>
+                                        </TabPane>
+                                        <TabPane tabId="3">
+                                            <Row>
+                                                <Col sm="12">
+                                                    <Table striped >
+                                                        <thead>
+                                                        <tr>
+                                                            <th>Type </th>
+                                                            <th>Nom projet</th>
+                                                            <th>Lead </th>
+                                                            <th>Soumis le </th>
+                                                            <th>Charge</th>
+                                                            <th>Action</th>
+                                                        </tr>
+
+                                                        </thead>
+                                                        <tbody>
+                                                        {this.state.projets.map(function(projet, idx){
+                                                            if(projet.createdBy.Status === "1er_tour"
+                                                                || projet.createdBy.Status === "2eme_tour")
+                                                            {
+                                                                if(projet.length == 0)
+                                                                {
+                                                                    return (<h1>Cette session n'a aucun projet</h1>)
+                                                                }else
+                                                                if(projet.members.length == 0)
+                                                                {
+
+                                                                    return(<div id={"btnajout"}>
+                                                                        <h1 key={idx}>Ce projet n'a aucun membre</h1>
+                                                                        <Link to={"/members/addMember/"+this.state.idSess+"/"+projet._id}
+                                                                              params={{
+
+                                                                                  idSession: this.state.idSess,
+                                                                                  idProjet: projet._id}}>
+
+                                                                            Ajouter un nouveau membre</Link>
+
+                                                                    </div>)
+                                                                }else
+                                                                if (projet.members[0].Role === 'lead')
+                                                                    return (
+
+                                                                        <tr key={idx}>
+
+                                                                            <td>
+                                                                                {projet.createdBy.TypeLabel.type}
+                                                                            </td>
+                                                                            <td>
+                                                                                {projet.Name}
+                                                                            </td>
+                                                                            <td>
+                                                                                {projet.members[0].FirsName}&nbsp;{projet.members[0].LastName}
+                                                                            </td>
+                                                                            <td>
+                                                                                {Moment(projet.createdBy.TypeLabel.SoumissionDate).format('DD-MM-YYYY')}
+                                                                            </td>
+                                                                            <td>
+                                                                                <form
+                                                                                    className="panel-body form-horizontal">
+
+
+                                                                                    <select id="demo-foo-filter-status"
+                                                                                            className="form-control"
+                                                                                            onChange={this.handleClick.bind(this, projet._id)}>
+                                                                                        <option>choisir charge</option>
+                                                                                        {this.state.charges.map(function (charge, idc) {
+                                                                                            return (
+
+                                                                                                <option
+                                                                                                    value={charge._id}
+                                                                                                    key={idc}>
+                                                                                                    {charge.FirstName}&nbsp;{charge.LastName}
+                                                                                                </option>
+                                                                                            )
+                                                                                        }.bind(this))}
+
+                                                                                    </select>
+
+
+                                                                                </form>
+
+                                                                            </td>
+
+                                                                            <td>
+                                                                                <Link
+                                                                                    to={"/projects/detailsProjets/" + this.state.idSess + "/" + projet._id}
+                                                                                    params={{
+                                                                                        idSessionP: this.state.idSess,
+                                                                                        idProjet: projet._id
+                                                                                    }}>
+                                                                                    Consulter
+                                                                                </Link>
+
+                                                                                &nbsp;
+                                                                                &nbsp;
+                                                                                <Link
+                                                                                    to={"/projects/ListeMembres/"+this.state.idSess+"/"+projet._id}
+                                                                                    params={{
+                                                                                        idSessionP: this.state.idSess,
+                                                                                        idProjet: projet._id
+                                                                                    }}
+                                                                                >
+                                                                                    Equipe
+                                                                                </Link>
+                                                                            </td>
+
+                                                                        </tr>
+
+                                                                    )
+                                                            }
+
+                                                        }.bind(this))}
+
+
+                                                        </tbody>
+                                                    </Table>
+                                                </Col>
+                                            </Row>
+                                        </TabPane>
+                                    </TabContent>
                                 </div>
 
-                                <div className="panel-heading" id={"questionnaire"}>
-                                    {
-                                        this.state.detailsprojets.map(function(proj, idx){
-                                            return (
-                                                <div key={idx} className="panel-heading">
-                                                    <label>{proj.text}</label>
-                                                    <p>{proj.responses[0].text}</p>
-                                                </div>
-                                            )
-                                        }.bind(this))}
-                                </div>
 
-                                <form className="form-group"  id={"formulaire"}
-                                      onSubmit={this.submitForm.bind(this)}>
-                                    <fieldset id="fieldsetD">
-
-                                        <legend>Avis chargé</legend>
-
-                                        <div className="panel-group" id="divValide">
-                                            <div className="form-group">
-                                                <input id={"dossierValideLab"} type="checkbox" name="valide"
-                                                       checked={this.state.dossierValide===true}
-                                                       onChange={this.toggleDossier}/>
-                                                <label htmlFor={'dossierValideLab'} id="labValide">Dossier Valide</label>
-                                            </div>
-
-                                            <div className="form-group" id="divValide">
-                                                <input id={"dossierInValideLab"} type="checkbox" name="invalide"
-                                                       checked={this.state.dossierValide===false}
-                                                       onChange={this.toggleDossier}  />
-                                                <label htmlFor={'dossierInValideLab'} id="labValide">Dossier Invalide</label>
-                                            </div>
-                                        </div>
-
-                                        {
-                                            this.state.dossierValide === true &&
-                                            <div className="form-group" id={"divAvis"}>
-                                                <input type="radio" value="2eme_tour" id="avis"  onChange={this.handleAvis} name="avis"/>
-                                                <label htmlFor={'avis'} id={"avis"}> Avis positif </label>
-                                                &nbsp;
-
-                                                &nbsp;
-                                                <input type="radio" value="1er_tour" id="avis2"  name="avis" onChange={this.handleAvis} />
-                                                <label htmlFor={'avis2'} id={"avis2"}> Avis neutre </label>
-                                                &nbsp;
-
-                                                &nbsp;
-                                                <input type="radio" value="refusee_premier_tour" id="avis3"  name="avis" onChange={this.handleAvis} />
-                                                <label htmlFor={'avis3'} id={"avis3"}> Avis negatif </label>
-                                            </div>
-                                        }
-                                        {
-                                            this.state.dossierValide === false &&
-                                            <div className="form-group">
-                                                <div className="form-check">
-                                                    <label className="form-check-label">
-                                                        <Input type="checkbox"  value="Document manquant" id="cause1"
-                                                               onChange={this.handleRefus1} className="form-check-input"/>
-                                                        <label htmlFor={'cause1'} id="labValide">  Document manquant </label>
-
-                                                    </label>
-                                                </div>
-                                                <div className="form-check">
-                                                    <label className="form-check-label">
-                                                        <Input type="checkbox" value="Entreprise ayant plus que 8 ans" id="cause2"
-                                                               onChange={this.handleRefus2} className="form-check-input"    />
-                                                        <label htmlFor={'cause2'} id="labValide">  Entreprise ayant plus que 8 ans </label>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        }
-                                        <textarea className="form-control" label="Commentaire"
-                                                  placeholder="Commentaire" rows="3"
-                                                  style={{backgroundColor: this.state.color_pwd_input,width:600}}
-                                                  onChange={this.handleCommentaireChange} required/>
-                                        <div className="panel-heading" id={"divbutton"}>
-                                            <Button color="primary" size="sm" type="submit"  disabled={this.state.active}
-                                                    onClick={this.test.bind(this)}
-                                                    className="btn btn-info " id="button1" name="Validation de l'avis"
-                                                    value="Submit">
-                                                Passer en instance
-                                            </Button>
-                                            <Fade in={this.state.fadeIn} tag="h5" className="mt-3">
-                                                This content will fade in and out as the button is pressed
-                                            </Fade>
-
-                                            &nbsp;
-
-                                            <Button color="primary" size="sm" type="submit"  disabled={!this.state.active}
-                                                    className="btn btn-info " id="button2" name="Validation de l'avis"
-                                                    onClick={this.updateAvisCharge.bind(this)}
-                                                    value="Submit">
-                                                Validation de l'avis
-                                            </Button>
-                                            <Fade in={this.state.fadeIn} tag="h5" className="mt-3">
-                                                This content will fade in and out as the button is pressed
-                                            </Fade>
-                                        </div>
-
-                                    </fieldset>
-                                </form>
                             </div>
 
 
@@ -420,7 +522,7 @@ export default class DetailsProjetParIdSesIdProjet extends Component {
 
                     </div>
 
-                    <Nav3/>
+                    <Nav1/>
 
                 </div>
 
@@ -430,4 +532,10 @@ export default class DetailsProjetParIdSesIdProjet extends Component {
     }
 }
 
-
+const mapDispatchToProps = {
+    affecterCharge
+};
+export default connect(
+    null,
+    mapDispatchToProps
+)(ListeProjetByIDSessions);
