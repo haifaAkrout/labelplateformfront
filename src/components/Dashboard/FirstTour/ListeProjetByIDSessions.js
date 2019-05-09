@@ -5,7 +5,7 @@ import axios from 'axios'
 import {Link} from "react-router-dom";
 import Header from "../../../containers/Header";
 import ContentContainer from "../../../containers/ContentContainer";
-import Nav3 from "../../../containers/Nav3";
+import Nav1 from "../../../containers/Nav1";
 import {connect} from "react-redux";
 import { Table,TabContent, TabPane, NavItem, NavLink, Nav,Card, Button, CardTitle, CardText, Row, Col } from 'reactstrap';
 import classnames from 'classnames';
@@ -55,6 +55,7 @@ class ListeProjetByIDSessions extends Component {
                     projets:response.data.Project,
                     idProjet : response.data.Project._id}
                     );
+                console.log(response.data);
                 console.log(response.data.Project)
                 console.log(response.data.Name)
                 console.log(response.data._id)
@@ -488,7 +489,7 @@ class ListeProjetByIDSessions extends Component {
 
                     </div>
 
-                    <Nav3/>
+                    <Nav1/>
 
                 </div>
 
