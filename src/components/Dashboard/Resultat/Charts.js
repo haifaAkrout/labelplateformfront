@@ -4,7 +4,7 @@ import {Bar,Line,Pie,Doughnut} from "react-chartjs-2";
 import "../../../App.css"
 import Header from "../../../containers/Header";
 import ContentContainer from "../../../containers/ContentContainer";
-import Nav3 from "../../../containers/Nav3";
+import Nav1 from "../../../containers/Nav1";
 import Moment from 'moment';
 
 import {Link} from "react-router-dom";
@@ -32,11 +32,10 @@ export  default  class Resultat extends React.Component{
         // const {idSession} = this.props.match.params
         // console.log(idSession)
         var listeProjet=[];
-        axios.get(`http://localhost:6003/sessions/charts/5cc2207f99c9a41200baaee1`)
+        axios.get(`https://labelplatform.herokuapp.com/sessions/charts/5cba2219bb0f481fe0e48b36`)
             .then(response => {
                 const projets=response.data;
                 let listePValide=[];
-                let labelListe=[' Projet valide','Projet invalide'];
                 let listePInvalide =[];
                 listePValide.push(projets.valide);
                 listePInvalide.push(projets.invalide);
@@ -50,22 +49,20 @@ export  default  class Resultat extends React.Component{
                     StartDate:response.data.data.StartDate,
                     nomSession:response.data.data.Name ,
                     chartData :{
-                        //labels:  listePValide+listePInvalide ,
-                        labels: labelListe,
+                        labels:  listePValide+listePInvalide ,
                         datasets:[{
-                            // label:'Project',
-                            data:listePValide+listePInvalide,
+                            label:'Project',
+                            data:[
+                                'valide','invalide'
+                            ],
                             backgroundColor: [
                                 'rgba(255,99,132,1)',
                                 'rgba(54, 162, 235, 1)',
                             ],
-                            borderColor:[
-                                'rgba(255,99,132,1)',
-                                'rgba(54, 162, 235, 1)',
-                            ],
-                            borderWidth: 5,
+                            borderColor:'#777',
+                            borderWidth: 1,
                             hoverBorderColor:'#000',
-                            hoverBorderWidth:5
+                            hoverBorderWidth:3
 
                         }
                         ]
@@ -116,33 +113,76 @@ export  default  class Resultat extends React.Component{
 
 
                                 <div className="panel-body">
-                                    <Pie
+                                    <Doughnut
                                         data={this.state.chartData}
                                         options={{
                                             title:{
                                                 display:this.props.displayTitle,
-                                                text: this.state.nomSession +' '
-                                                    + Moment(this.state.StartDate).format('YYYY'),
-                                                fontSize:25
+                                                text: this.state.nomSession +' '+ Moment(this.state.StartDate).format('YYYY'),
+                                                fontSize:30
                                             },
                                             legend:{
-                                                // display:true,
-                                                // position:true,
+                                                display:this.props.displayLegend,
+                                                position:true,
                                                 labels:this.props.labelsLegend
                                             },
-                                            // layout:{
-                                            //     padding:{
-                                            //         left:50,
-                                            //         right:0,
-                                            //         bottom:0,
-                                            //         top:0
-                                            //     }
-                                            // }
+                                            layout:{
+                                                padding:{
+                                                    left:50,
+                                                    right:0,
+                                                    bottom:0,
+                                                    top:0
+                                                }
+                                            }
                                         }}
                                     />
                                 </div>
 
+                                {/*<script>*/}
+                                {/*    let myChart = document.getElementById('myChart').getContext('2d');*/}
 
+                                {/*    //global options*/}
+                                {/*    Chart.defaults.global.defaultFontFamily = 'lato';*/}
+                                {/*    Chart.defaults.global.defaultFontSize = 18;*/}
+                                {/*    Chart.defaults.global.defaultFontColor = '#777';*/}
+
+                                {/*    let massPopChart = new Chart(myChart,{*/}
+                                {/*    type :'bar',//barhorizontalBar,pie,doughnut,radar*/}
+                                {/*    data:{*/}
+                                {/*    lables:[*/}
+                                {/*    'Boston',*/}
+                                {/*    'Worcester',*/}
+                                {/*    'Springfield',*/}
+                                {/*    'lowell',*/}
+                                {/*    'cambridge',*/}
+                                {/*    'new bedford'*/}
+                                {/*    ],*/}
+                                {/*    datasets:[*/}
+                                {/*    12563,*/}
+                                {/*    14523,*/}
+                                {/*    12563,*/}
+                                {/*    12563,*/}
+                                {/*    125365,*/}
+                                {/*    145231*/}
+                                {/*    ],*/}
+                                {/*    backgroundColor:'green'*/}
+                                {/*},*/}
+                                {/*    options:{*/}
+                                {/*    title:{*/}
+                                {/*    display:true,*/}
+                                {/*    text:'larget chart '*/}
+                                {/*    fontSize:25*/}
+                                {/*},*/}
+                                {/*    legend:{*/}
+                                {/*    display:false,*/}
+                                {/*    position:'right',*/}
+                                {/*    labels:{*/}
+                                {/*    fontColor:'#000'*/}
+                                {/*}*/}
+                                {/*}*/}
+                                {/*}*/}
+                                {/*});*/}
+                                {/*</script>*/}
 
                             </div>
 
@@ -151,7 +191,7 @@ export  default  class Resultat extends React.Component{
 
                     </div>
 
-                    <Nav3/>
+                    <Nav1/>
 
                 </div>
 
