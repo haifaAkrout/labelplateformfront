@@ -65,9 +65,9 @@ class Nav extends React.Component {
                                         </a>
 
                                         <ul className="collapse">
-                                            <li><a href="http://localhost:3000/Judges/sendEmail"><i className="fa fa-caret-right"></i>
+                                            <li><a href="https://labelplateformfront.herokuapp.com/Judges/sendEmail"><i className="fa fa-caret-right"></i>
                                                 Add Judge  </a></li>
-                                            <li><a href="http://localhost:3000/judges/demandes"><i className="fa fa-caret-right"></i>
+                                            <li><a href="https://labelplateformfront.herokuapp.com/judges/demandes"><i className="fa fa-caret-right"></i>
                                                 Show Judges  </a></li>
 
 
@@ -84,9 +84,9 @@ class Nav extends React.Component {
                                         </a>
 
                                         <ul className="collapse">
-                                            <li><a href="http://localhost:3000/addSession"><i className="fa fa-caret-right"></i>
+                                            <li><a href="https://labelplateformfront.herokuapp.com/addSession"><i className="fa fa-caret-right"></i>
                                                 Add Session </a></li>
-                                            <li><a href="http://localhost:3000/Sessions2"><i className="fa fa-caret-right"></i>
+                                            <li><a href="https://labelplateformfront.herokuapp.com/Sessions2"><i className="fa fa-caret-right"></i>
                                                 Show Sessions  </a></li>
 
 
@@ -152,7 +152,7 @@ class Nav extends React.Component {
                                                 </a>
 
                                                 <ul className="collapse">
-                                                    <li><a href="http://localhost:3000/sessions/"><i className="fa fa-caret-right"></i>
+                                                    <li><a href="https://labelplateformfront.herokuapp.com/sessions/"><i className="fa fa-caret-right"></i>
                                                         Liste des sessions  </a></li>
 
 
