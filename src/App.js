@@ -9,6 +9,7 @@ import JudgeList from "./components/Dashboard/Judges/DemandesJudges";
  import addSession from "./components/Dashboard/Sessions/addSession";
  import showSessions from "./components/Dashboard/Sessions/showSessions";
  import showSessionsBack from "./components/Dashboard/Judges/showSessionsBack";
+ import showSessionsBack1 from "./components/Dashboard/Judges/showSessionsBack1";
  import addCompte1 from "./components/Dashboard/Candidatures/addCompte";
  import Project from "./components/Dashboard/Candidatures/Project";
 import login from "../src/components/login/login";
@@ -79,6 +80,7 @@ class App extends Component {
               <Route path="/addSession" exact component={addSession} />
               <Route path="/Candidatures" exact component={showSessions} />
               <Route path="/Sessions2" exact component={showSessionsBack} />
+              <Route path="/Sessions3" exact component={showSessionsBack1} />
                 <Route path="/" exact component={home} />
                 <Route path="/SignInCa" exact component={login4} />
               <Route path="/login" exact component={login} />
