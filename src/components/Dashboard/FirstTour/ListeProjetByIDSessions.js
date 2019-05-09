@@ -47,9 +47,9 @@ class ListeProjetByIDSessions extends Component {
         this.setState({ chargeSelected : e.target.value });
     }
     componentDidMount() {
-        const {idSession} = this.props.match.params
-        console.log(idSession)
-        axios.get(`http://localhost:6003/sessions/listeProjetsparIdSes/`+idSession)
+        const {idSessionP} = this.props.match.params
+        console.log(idSessionP)
+        axios.get(`http://localhost:6003/sessions/listeProjetsparIdSes/`+idSessionP)
             .then(response => {
                 this.setState({
                     projets:response.data.Project,
