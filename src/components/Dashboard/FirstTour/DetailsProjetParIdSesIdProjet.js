@@ -298,7 +298,7 @@ export default class DetailsProjetParIdSesIdProjet extends Component {
                                 }
 
                                 <div className="panel-heading" id={"div"}>
-                               
+
 
                                     <Link to={"/sessions/listeProjetsparIdSes/"+ this.state.idSessionBack }params={{ idSessionP: this.state.idSessionBack}}>
                                         <label>
