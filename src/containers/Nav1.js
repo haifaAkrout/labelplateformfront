@@ -51,9 +51,10 @@ class Nav1 extends React.Component {
 
                                     <li className="list-header txt_center">MENU</li>
 
-                                    <li><a href="/"> <i className="fa fa-home"></i> <span
-                                        className="menu-title"> Dashboard </span> </a></li>
-
+                                    <li><Link to={"/front"}> <i className="fa fa-home"></i> <span
+                                        className="menu-title"> Home </span> </Link></li>
+                                    <li><Link > <i className="fa fa-home"></i> <span
+                                        className="menu-title"> Dashboard </span> </Link></li>
                                   
                                     <li>
                                         <a href="#">
