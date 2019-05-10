@@ -5,7 +5,7 @@ import { Progress } from 'reactstrap';
 import ReactDOM from 'react-dom';
 import {enregistrerBrouillonJudge,} from "../../../store/actions";
 import {refuserCandidature,} from "../../../store/actions";
-import Nav1 from '../../../containers/Nav1.js';
+import Nav2 from '../../../containers/Nav2.js';
 import {appelerCandidature,} from "../../../store/actions";
 import { UncontrolledTooltip } from 'reactstrap';
 import { ListGroup, ListGroupItem } from 'reactstrap';
@@ -85,8 +85,8 @@ class VotesProjet extends React.Component{
                     <div id="content-container">
                         <ContentContainer/>
 
-                        <div className="panel">
-                            <div className="panel-heading">
+                        <div className="panel" >
+                            <div className="panel-heading" className="td">
 
 
 
@@ -101,8 +101,8 @@ class VotesProjet extends React.Component{
 
 
                             <center>
-                                <center><span>{Sessions.length}projects %</span></center>
-                                <Progress color="#31b0d5" value={Sessions.length}/>
+                                <center><span className="td">{Sessions.length}projects %</span></center>
+                                <Progress color="#31b0d5" value={Sessions.length} className="td"/>
                             </center>
 
 
@@ -126,7 +126,7 @@ class VotesProjet extends React.Component{
 
                                 <div className="panel-body">
 
-                                    <table id="demo-foo-filtering"
+                                    <table id="demo-foo-filtering" className="td"
                                            className="table table-bordered table-hover toggle-circle" data-page-size="7">
 
                                         <thead>
@@ -173,7 +173,7 @@ class VotesProjet extends React.Component{
                             </TabPane>
                         </TabContent>
 
-                       <Nav1/>
+                       <Nav2/>
 
                     </div>
 
