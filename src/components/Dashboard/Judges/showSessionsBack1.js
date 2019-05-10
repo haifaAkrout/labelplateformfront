@@ -8,15 +8,16 @@ import {
     addCompte,
 
 } from "../../../store/actions";
+import Moment from 'moment';
 import Header from '../../../containers/Header.js';
 import ContentContainer from '../../../containers/ContentContainer.js';
-import Nav from '../../../containers/Nav.js';
+import Nav2 from '../../../containers/Nav2.js';
 
 import logo from "../../login/logo_label_blanc.png";
 
 import Header2 from "../../Front/front2";
 import {Link} from "react-router-dom";
-import Moment from 'moment';
+
 class showSessionsBack1 extends Component{
 
     loading = () => <div className="animated fadeIn pt-1 text-center">Loading...</div>
@@ -117,7 +118,7 @@ class showSessionsBack1 extends Component{
 
 
                     </div>
-                    <Nav/>
+                    <Nav2/>
 
 
                 </div>

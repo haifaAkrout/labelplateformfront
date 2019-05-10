@@ -8,9 +8,10 @@ import {
     addCompte,
 
 } from "../../../store/actions";
+import Moment from 'moment';
 import Header from '../../../containers/Header.js';
 import ContentContainer from '../../../containers/ContentContainer.js';
-import Nav from '../../../containers/Nav.js';
+import Nav1 from '../../../containers/Nav1.js';
 
 import logo from "../../login/logo_label_blanc.png";
 
@@ -90,8 +91,8 @@ class showSessionsBack extends Component{
 
                                                     <tr key={idx}>
                                                         <td>{d.Name }</td>
-                                                        <td>{ d.StartDate }</td>
-                                                        <td>{ d.EndDate}</td>
+                                                        <td> {Moment(d.StartDate).format('DD-MM-YYYY')}</td>
+                                                        <td> {Moment(d.EndDate).format('DD-MM-YYYY')}</td>
 
                                                         <td>    <button
                                                             onClick={() => this.handleclick(d._id)}
@@ -119,7 +120,7 @@ class showSessionsBack extends Component{
 
 
                     </div>
-                    <Nav/>
+                    <Nav1/>
 
 
                 </div>

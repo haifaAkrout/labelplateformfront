@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import {
     deleteJudge, setCurrentUser,
 } from "../../../store/actions";
+import Moment from 'moment';
 import {connect} from "react-redux";
 import Header from '../../../containers/Header.js';
 import ContentContainer from '../../../containers/ContentContainer.js';
@@ -32,10 +33,10 @@ class JudgeList extends React.Component{
                     NotificationManager.info('Votre email a étè envoyée avec succées');
                     break;
                 case 'success':
-                    NotificationManager.success('Success message', 'Title here');
+                    NotificationManager.success('Judge deleted', 'Delete');
                     break;
                 case 'warning':
-                    NotificationManager.warning('Warning message', 'Close after 3000ms', 3000);
+                    NotificationManager.warning('', 'Close after 3000ms', 3000);
                     break;
                 case 'error':
                     NotificationManager.error('Error message', 'Click me!', 5000, () => {
@@ -124,16 +125,16 @@ this.loadJudges()
                                             <tr key={idx}>
                                                 <td>{d.LastName } { d.FirstName }</td>
                                                 <td>{ d.Email }</td>
-                                                <td>{ d.creationDate}</td>
+                                                <td>    {Moment(d.creationDate).format('DD-MM-YYYY')}</td>
                                                 <td> {d.Status }</td>
-                                                <td>    <button
+                                                <td> <Link onClick={this.createNotification("success")} >   <button
                                                     onClick={() => this.handleclick(d._id,d._id)}
 
 
                                                     href="/"
                                                     className="btn btn-info"
                                                 >Delete
-                                                </button>
+                                                </button></Link>
                                                 <button className="btn btn-pink ">  <Link to={"/Judges/editCompte/"+d._id}params={{ id1: d._id}}>Edit</Link>
                                                 </button>
 
