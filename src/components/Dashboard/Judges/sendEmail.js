@@ -169,7 +169,7 @@ class sendEmail extends Component{
                                     </div>
                                 </div>
                                 <NotificationContainer hidden={this.state.error2 || this.state.error1}/>
-                             <center><button  type="Submit"    onClick={this.createNotification("info")} className="btn btn-danger"><i className="fa fa-send"></i> Send</button></center>
+                             <center><button  type="Submit"     className="btn btn-danger"><i className="fa fa-send"></i> Send</button></center>
 
                             </form>
 
