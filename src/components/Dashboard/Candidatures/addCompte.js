@@ -77,6 +77,7 @@ class addCompte1 extends Component{
         axios.post('https://labelplatform.herokuapp.com/judges/registerCandidat',charge
         ).then(res=>{console.log(res);
             console.log(res.data)})
+        this.props.history.push("/SignInCa");
        }
     render(){
 
