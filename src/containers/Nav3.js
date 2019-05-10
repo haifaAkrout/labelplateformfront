@@ -114,7 +114,7 @@ class Nav3 extends React.Component {
 
 
 
-                                    <li><a href="/logout"> <i className="fa fa-sign-out"></i> <span
+                                    <li><a href="/front"> <i className="fa fa-sign-out"></i> <span
                                         className="menu-title"> Logout </span> </a></li>
 
 
