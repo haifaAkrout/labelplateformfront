@@ -50,7 +50,7 @@ class Project extends Component{
         const user1 =setCurrentUser(decoded)
         console.log(user1.payload.id)
         this.state.idCandidat=user1.payload.id;
-        this.loadJudges();
+        //this.loadJudges();
 
     }
 
