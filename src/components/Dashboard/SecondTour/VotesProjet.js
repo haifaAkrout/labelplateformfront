@@ -48,7 +48,7 @@ class VotesProjet extends React.Component{
 
     componentDidMount() {
         const {id2}=this.props.match.params
-        axios.get('https://labelplatform.herokuapp.com//candidatures/'+id2).then(res=>{
+        axios.get('https://labelplatform.herokuapp.com/candidatures/'+id2).then(res=>{
             console.log(res.data.Project)
             this.setState({NomSession:res.data.Name});
             this.setState({Sessions:res.data.Project});
@@ -133,7 +133,7 @@ class VotesProjet extends React.Component{
                                         <tr>
                                             <th>Type of candidature</th>
                                             <th >Project Name </th>
-                                            <th >Lead </th>
+                                            {/*<th >Lead </th>*/}
 
                                             <th >votes pour </th>
 
@@ -152,7 +152,7 @@ class VotesProjet extends React.Component{
                                                         <td>{d.createdBy.TypeLabel.type}</td>
                                                         <td>{d.Name }</td>
 
-                                                        <td>{d.members[0].Email}</td>
+                                                        {/*<td>{d.members[0].Email}</td>*/}
                                                         <td>{d.createdBy.countPositif}/{d.createdBy.countNegatif}</td>
 
 

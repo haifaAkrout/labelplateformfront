@@ -99,6 +99,11 @@ class showSessionsBack1 extends Component{
                                                     className="btn btn-info"
                                                 >Consult
                                                 </Link>
+                                                    <Link
+                                                        to={"/votes/"+d._id}params={{ id2: d._id}}
+                                                        className="btn btn-info"
+                                                    >Votes
+                                                    </Link>
 
                                                 </td>
                                             </tr>
