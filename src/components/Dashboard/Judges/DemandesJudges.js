@@ -33,7 +33,7 @@ class JudgeList extends React.Component{
                     NotificationManager.info('Votre email a étè envoyée avec succées');
                     break;
                 case 'success':
-                    NotificationManager.success('Judge deleted', 'Delete');
+                    NotificationManager.success('Success message', 'Title here');
                     break;
                 case 'warning':
                     NotificationManager.warning('', 'Close after 3000ms', 3000);
