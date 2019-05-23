@@ -49,12 +49,14 @@ export default class listCandidatures extends React.Component{
 
 
 
-                        <div className="panel" className="td">
-                            <div className="panel-body">
-
-                                <Table striped id={"tableSession"}>
+                        <div className="panel td" style={{width:"1000px"}}>
+                            <div className="panel-heading">
+                                <h3 className="panel-title" style={{float:"left"}}>     <a href="/Judges/demandes"><strong>Judges </strong></a><strong>->all</strong></h3>
+                            </div>
+                            <div className="panel-body" className="td">
+                                <table ref="table2" id="demo-dt-basic" className="table table-striped table-bordered">
                                     <thead>
-                                        <tr>
+                                    <tr style={{fontSize:"14px"}}>
                                             <th>Name</th>
                                             <th>Start Date</th>
                                             <th>End Date</th>
@@ -89,7 +91,7 @@ export default class listCandidatures extends React.Component{
 
                                         }.bind(this))}
                                     </tbody>
-                                </Table>
+                                </table>
 
                             </div>
 
