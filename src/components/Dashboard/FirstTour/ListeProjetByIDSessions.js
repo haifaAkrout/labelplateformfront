@@ -174,6 +174,7 @@ class ListeProjetByIDSessions extends Component {
                                                                 || projet.createdBy.Status ==='refusee_1er_tour'
                                                                 || projet.createdBy.Status ==='refusee_1er_tour_en_instance'
                                                                 || projet.createdBy.Status ==='refusee_1er_tour'
+                                                                || projet.createdBy.Status ==='non Traitée'
                                                                 || projet.createdBy.Status === 'Brouillon'
                                                                 || projet.createdBy.Status === '1er_tour'
                                                             ) {
@@ -297,6 +298,7 @@ class ListeProjetByIDSessions extends Component {
                                                         <tbody>
                                                         {this.state.projets.map(function(projet, idx){
                                                             if(projet.createdBy.Status === '1er_tour_en_instance'
+                                                                || projet.createdBy.Status ==='Traitée'
                                                                 || projet.createdBy.Status === 'refusee_premier_tour'
                                                                 || projet.createdBy.Status === '2eme_tour_en_instance')
                                                             {
