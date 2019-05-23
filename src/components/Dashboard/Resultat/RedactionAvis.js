@@ -4,7 +4,7 @@ import axios from 'axios'
 import "../../../App.css"
 import Header from "../../../containers/Header";
 import ContentContainer from "../../../containers/ContentContainer";
-import Nav1 from "../../../containers/Nav1";
+import Nav3 from "../../../containers/Nav3";
 import {Button, Col, Fade, Form, FormGroup, Input, Label} from "reactstrap"
 export default class RedactionAvis extends Component {
     constructor(props) {
@@ -210,7 +210,7 @@ export default class RedactionAvis extends Component {
 
                     </div>
 
-                    <Nav1/>
+                    <Nav3/>
 
                 </div>
 

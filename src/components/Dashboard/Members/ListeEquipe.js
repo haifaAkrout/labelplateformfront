@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import Header from "../../../containers/Header";
 import ContentContainer from "../../../containers/ContentContainer";
-import Nav1 from "../../../containers/Nav1";
+import Nav3 from "../../../containers/Nav3";
 import Moment from 'moment';
 import {Link} from "react-router-dom";
 import {Table,Col,Row,Container} from "reactstrap";
@@ -229,7 +229,7 @@ export default class ListeEquipe extends React.Component {
 
                     </div>
 
-                    <Nav1/>
+                    <Nav3/>
 
                 </div>
 

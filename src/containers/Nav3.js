@@ -74,43 +74,6 @@ class Nav3 extends React.Component {
 
                                         </ul>
                                     </li>
-                                    <li>
-                                        <a href="#">
-                                            <i className="fa fa-th"></i>
-                                            <span className="menu-title">
-                                             Sessions Management
-                                            </span>
-                                            <i className="arrow"></i>
-                                        </a>
-
-                                        <ul className="collapse">
-                                            <li><a href="https://labelplateformfront.herokuapp.com/addSession"><i className="fa fa-caret-right"></i>
-                                                Add Session </a></li>
-                                            <li><a href="https://labelplateformfront.herokuapp.com/Sessions2"><i className="fa fa-caret-right"></i>
-                                                Show Sessions  </a></li>
-
-
-
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i className="fa fa-th"></i>
-                                            <span className="menu-title">
-                                            Third Tour
-                                            </span>
-                                            <i className="arrow"></i>
-                                        </a>
-
-                                        <ul className="collapse">
-                                            <li><a href="https://labelplateformfront.herokuapp.com/addQuestion"><i className="fa fa-caret-right"></i>
-                                                Add Question </a></li>
-
-
-
-
-                                        </ul>
-                                    </li>
 
 
 

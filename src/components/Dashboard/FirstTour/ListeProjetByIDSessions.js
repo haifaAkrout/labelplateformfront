@@ -5,7 +5,7 @@ import axios from 'axios'
 import {Link} from "react-router-dom";
 import Header from "../../../containers/Header";
 import ContentContainer from "../../../containers/ContentContainer";
-import Nav1 from "../../../containers/Nav1";
+import Nav3 from "../../../containers/Nav3";
 import {connect} from "react-redux";
 import { Table,TabContent, TabPane, NavItem, NavLink, Nav,Card, Button, CardTitle, CardText, Row, Col } from 'reactstrap';
 import classnames from 'classnames';
@@ -532,7 +532,7 @@ class ListeProjetByIDSessions extends Component {
 
                     </div>
 
-                    <Nav1/>
+                    <Nav3/>
 
                 </div>
 

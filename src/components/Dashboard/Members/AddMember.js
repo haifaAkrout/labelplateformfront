@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 import '../../../App.css';
 import Header from '../../../containers/Header.js';
 import ContentContainer from '../../../containers/ContentContainer.js';
-import Nav1 from '../../../containers/Nav1.js';
+import Nav3 from '../../../containers/Nav3.js';
 import axios from "axios";
 export default class AddMember extends Component{
     loading = () => <div className="animated fadeIn pt-1 text-center">Loading...</div>
@@ -210,7 +210,7 @@ export default class AddMember extends Component{
                         </div>
 
                     </div>
-                    <Nav1/>
+                    <Nav3/>
 
                 </div>
 

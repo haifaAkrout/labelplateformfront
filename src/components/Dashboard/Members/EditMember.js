@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import Header from '../../../containers/Header.js';
 import ContentContainer from '../../../containers/ContentContainer.js';
-import Nav1 from '../../../containers/Nav1.js';
+import Nav3 from '../../../containers/Nav3.js';
 import {Button, Col, Fade, FormGroup, Label} from "reactstrap";
 import Input from "reactstrap/es/Input";
 export default class EditMember extends Component{
@@ -224,7 +224,7 @@ export default class EditMember extends Component{
 
                     </div>
 
-                    <Nav1/>
+                    <Nav3/>
 
                 </div>
 
