@@ -121,13 +121,13 @@ export default class AddMember extends Component{
                 id =  "container"
                 className = "effect mainnav-sm navbar-fixed mainnav-fixed" >
 
-                <div className="boxed">
+                <div className="boxed td">
                     <Header/>
                     <div id="content-container">
                         <ContentContainer/>
                         <div className="row">
                             <div className="col-lg-9">
-                                <div className="panel" id={"divForm"}>
+                                <div className="panel td" id={"divForm"}>
                                     <div className="panel-heading">
 
                                         <h4 id={"namepage"}>Ajouter membre</h4>

@@ -113,12 +113,12 @@ export  default  class Resultat extends React.Component{
             <div id = "container" className = "effect mainnav-sm navbar-fixed mainnav-fixed" >
 
                 <Header/>
-                <div className="boxed">
+                <div className="boxed td">
 
                     <div id="content-container">
                         <ContentContainer/>
 
-                        <div className="panel">
+                        <div className="panel td">
                             <div className="panel-body">
                                 <div className="panel-heading" id={"divtitle"}>
 

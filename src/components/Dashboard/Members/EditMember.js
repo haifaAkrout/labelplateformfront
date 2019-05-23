@@ -131,13 +131,13 @@ export default class EditMember extends Component{
                 id = "container"
                 className = "effect mainnav-sm navbar-fixed mainnav-fixed" >
                 <Header/>
-                <div className="boxed">
+                <div className="boxed td">
 
                     <div id="content-container">
                         <ContentContainer/>
                         <div className="row">
                             <div className="col-lg-9">
-                                <div className="panel" id={"divForm"}>
+                                <div className="panel td" id={"divForm"}>
                                     <div className="panel-heading">
 
                                         <h4 id={"namepage"}>Modifier Membre</h4>

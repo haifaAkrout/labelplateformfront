@@ -106,7 +106,7 @@ export  default  class Resultat extends React.Component{
                     <div id="content-container">
                         <ContentContainer/>
 
-                        <div className="panel">
+                        <div className="panel td">
                             <div className="panel-body">
                                 <div className="panel-heading" id={"divtitle"}>
                                     <label>
