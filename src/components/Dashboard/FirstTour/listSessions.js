@@ -49,7 +49,7 @@ export default class listCandidatures extends React.Component{
 
 
 
-                        <div className="panel">
+                        <div className="panel" className="td">
                             <div className="panel-body">
 
                                 <Table striped id={"tableSession"}>

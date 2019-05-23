@@ -295,7 +295,7 @@ export default class DetailsProjetParIdSesIdProjet extends Component {
                 <div id="content-container">
                     <ContentContainer/>
 
-                    <div className="panel">
+                    <div className="panel td">
 
                     <div className="panel-body">
                         <Link to={"/resultat/"+ this.state.idSessionBack }

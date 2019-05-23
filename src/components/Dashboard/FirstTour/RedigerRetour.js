@@ -154,7 +154,7 @@ export default class RedigerRetour extends Component {
                     <div id="content-container">
                         <ContentContainer/>
 
-                        <div className="panel">
+                        <div className="panel td">
 
                             <div className="panel-body">
                                 <label>
