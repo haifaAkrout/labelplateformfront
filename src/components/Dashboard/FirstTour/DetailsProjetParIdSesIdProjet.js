@@ -300,14 +300,14 @@ export default class DetailsProjetParIdSesIdProjet extends Component {
                     <div className="panel-body">
                         <Link to={"/resultat/"+ this.state.idSessionBack }
                               params={{ idSession: this.state.idSessionBack}}>
-                            <label>
+                            <label  style={{color:"black"}}>
                                Afficher Resultat
                             </label>
                         </Link>&nbsp;
 
                         <div className="panel-heading" id={"div"}>
                             <Link to={"/sessions/listeProjetsparIdSes/"+ this.state.idSessionBack }params={{ idSessionP: this.state.idSessionBack}}>
-                                <label>
+                                <label  style={{color:"black"}}>
                                     { this.state.NomSession}&nbsp;
                                     {Moment(this.state.DateSession).format('YYYY')}
                                 </label>

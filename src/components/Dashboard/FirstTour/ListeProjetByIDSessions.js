@@ -115,7 +115,7 @@ class ListeProjetByIDSessions extends Component {
                             <div className="panel-body">
 
                                 <div className="panel-heading" id={"divtitle"}>
-                                    <label id={"label1"}>
+                                    <label id={"label1"}  style={{color:"black"}}>
                                         {this.state.NomSession} &nbsp;
                                         <span>
                                                     {Moment(this.state.DateFinSession).format('YYYY')}
@@ -125,7 +125,7 @@ class ListeProjetByIDSessions extends Component {
 
                                 </div>
                                 <Nav tabs id={"nav"} className="td">
-                                    <NavItem>
+                                    <NavItem className="td">
                                         <NavLink
                                             className={classnames({ active: this.state.activeTab === '1' })}
                                             onClick={() => { this.toggle('1'); }}
@@ -133,16 +133,16 @@ class ListeProjetByIDSessions extends Component {
                                             Candidature à traiter
                                         </NavLink>
                                     </NavItem>
-                                    <NavItem>
-                                        <NavLink
+                                    <NavItem className="td">
+                                        <NavLink classNale="td"
                                             className={classnames({ active: this.state.activeTab === '2' })}
                                             onClick={() => { this.toggle('2'); }}
                                         >
                                             Avis en instance
                                         </NavLink>
                                     </NavItem>
-                                    <NavItem>
-                                        <NavLink
+                                    <NavItem className="td">
+                                        <NavLink classNam="td"
                                             className={classnames({ active: this.state.activeTab === '3' })}
                                             onClick={() => { this.toggle('3'); }}
                                         >
@@ -244,7 +244,7 @@ class ListeProjetByIDSessions extends Component {
                                                                             </td>
 
                                                                             <td>
-                                                                                <Link
+                                                                                <Link style={{color:"black"}}
                                                                                     to={"/projects/detailsProjets/" + this.state.idSess + "/" + projet._id}
                                                                                     params={{
                                                                                         idSessionP: this.state.idSess,
@@ -254,7 +254,7 @@ class ListeProjetByIDSessions extends Component {
                                                                                 </Link>
                                                                                 &nbsp;
                                                                                 &nbsp;
-                                                                                <Link
+                                                                                <Link  style={{color:"black"}}
                                                                                     to={"/projects/ListeMembres/"+this.state.idSess+"/"+projet._id}
                                                                                     params={{
                                                                                         idSessionP: this.state.idSess,
@@ -365,7 +365,7 @@ class ListeProjetByIDSessions extends Component {
                                                                             </td>
 
                                                                             <td>
-                                                                                <Link
+                                                                                <Link  style={{color:"black"}}
                                                                                     to={"/projects/detailsProjets/" + this.state.idSess + "/" + projet._id}
                                                                                     params={{
                                                                                         idSessionP: this.state.idSess,
@@ -375,7 +375,7 @@ class ListeProjetByIDSessions extends Component {
                                                                                 </Link>
                                                                                 &nbsp;
                                                                                 &nbsp;
-                                                                                <Link
+                                                                                <Link  style={{color:"black"}}
                                                                                     to={"/projects/ListeMembres/"+this.state.idSess+"/"+projet._id}
                                                                                     params={{
                                                                                         idSessionP: this.state.idSess,
@@ -484,7 +484,7 @@ class ListeProjetByIDSessions extends Component {
                                                                             </td>
 
                                                                             <td>
-                                                                                <Link
+                                                                                <Link  style={{color:"black"}}
                                                                                     to={"/projects/detailsProjets/" + this.state.idSess + "/" + projet._id}
                                                                                     params={{
                                                                                         idSessionP: this.state.idSess,
@@ -495,7 +495,7 @@ class ListeProjetByIDSessions extends Component {
 
                                                                                 &nbsp;
                                                                                 &nbsp;
-                                                                                <Link
+                                                                                <Link  style={{color:"black"}}
                                                                                     to={"/projects/ListeMembres/"+this.state.idSess+"/"+projet._id}
                                                                                     params={{
                                                                                         idSessionP: this.state.idSess,

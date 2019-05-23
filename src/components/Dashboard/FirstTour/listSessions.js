@@ -51,13 +51,13 @@ export default class listCandidatures extends React.Component{
 
                         <div className="panel td" style={{width:"1000px"}}>
                             <div className="panel-heading">
-                                <h3 className="panel-title" style={{float:"left"}}>     <a href="/Judges/demandes"><strong>Judges </strong></a><strong>->all</strong></h3>
+                                <h3 className="panel-title" style={{float:"left"}}>     <a href="/Judges/demandes"><strong>sessions </strong></a><strong>->all</strong></h3>
                             </div>
                             <div className="panel-body" className="td">
                                 <table ref="table2" id="demo-dt-basic" className="table table-striped table-bordered">
                                     <thead>
                                     <tr style={{fontSize:"14px"}}>
-                                            <th>Name</th>
+                                            <th className="td" style={{fontSize:"14px"}}>Name</th>
                                             <th>Start Date</th>
                                             <th>End Date</th>
                                             {/*<th>Status</th>*/}
