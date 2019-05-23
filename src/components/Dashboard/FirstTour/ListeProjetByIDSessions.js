@@ -5,7 +5,7 @@ import axios from 'axios'
 import {Link} from "react-router-dom";
 import Header from "../../../containers/Header";
 import ContentContainer from "../../../containers/ContentContainer";
-import Nav3 from "../../../containers/Nav3";
+import Nav1 from "../../../containers/Nav1";
 import {connect} from "react-redux";
 import { Table,TabContent, TabPane, NavItem, NavLink, Nav,Card, Button, CardTitle, CardText, Row, Col } from 'reactstrap';
 import classnames from 'classnames';
@@ -96,6 +96,7 @@ class ListeProjetByIDSessions extends Component {
             console.log(res);
             console.log(res.data);
             console.log("affecter charge")})
+            alert('charge affecté avec success')
     }
 
     render() {
@@ -170,16 +171,32 @@ class ListeProjetByIDSessions extends Component {
                                                         {this.state.projets.map(function(projet, idx){
                                                             if(
                                                                 projet.createdBy.Status === 'Pas_de_candidature'
+                                                                || projet.createdBy.Status ==='refusee_1er_tour'
+                                                                || projet.createdBy.Status ==='refusee_1er_tour_en_instance'
+                                                                || projet.createdBy.Status ==='refusee_1er_tour'
                                                                 || projet.createdBy.Status === 'Brouillon'
                                                                 || projet.createdBy.Status === '1er_tour'
                                                             ) {
                                                             if(projet.length == 0)
                                                             {
-                                                                return (<h1>Cette session n'a aucun projet</h1>)
+                                                                return (<h1>Cette session n'a aucun projet</h1>
+                                                                )
+
+
                                                             }else
                                                             if(projet.members.length == 0)
                                                             {
-                                                                return (<h1>Ce n'a aucun membre</h1>)
+                                                                return(<div id={"btnajout"}>
+                                                                    <h1 key={idx}>Ce projet n'a aucun membre</h1>
+                                                                    <Link to={"/members/addMember/"+this.state.idSess+"/"+projet._id}
+                                                                          params={{
+
+                                                                              idSession: this.state.idSess,
+                                                                              idProjet: projet._id}}>
+
+                                                                        Ajouter un nouveau membre</Link>
+
+                                                                </div>)
                                                             }else
                                                                 if (projet.members[0].Role === 'lead')
                                                                     return (
@@ -193,7 +210,9 @@ class ListeProjetByIDSessions extends Component {
                                                                                 {projet.Name}
                                                                             </td>
                                                                             <td>
-                                                                                {projet.members[0].FirsName}&nbsp;{projet.members[0].LastName}
+                                                                                {projet.members[0].FirstName}&nbsp;{projet.members[0].LastName}
+                                                                                {projet.members[0].Email}
+
                                                                             </td>
                                                                             <td>
                                                                                 {Moment(projet.createdBy.TypeLabel.SoumissionDate).format('DD-MM-YYYY')}
@@ -287,7 +306,17 @@ class ListeProjetByIDSessions extends Component {
                                                             }else
                                                             if(projet.members.length == 0)
                                                             {
-                                                                return (<h1>Ce n'a aucun membre</h1>)
+                                                                return(<div id={"btnajout"}>
+                                                                    <h1 key={idx}>Ce projet n'a aucun membre</h1>
+                                                                    <Link to={"/members/addMember/"+this.state.idSess+"/"+projet._id}
+                                                                          params={{
+
+                                                                              idSession: this.state.idSess,
+                                                                              idProjet: projet._id}}>
+
+                                                                        Ajouter un nouveau membre</Link>
+
+                                                                </div>)
                                                             }else
                                                                 if (projet.members[0].Role === 'lead')
                                                                     return (
@@ -301,7 +330,8 @@ class ListeProjetByIDSessions extends Component {
                                                                                 {projet.Name}
                                                                             </td>
                                                                             <td>
-                                                                                {projet.members[0].FirsName}&nbsp;{projet.members[0].LastName}
+                                                                                {projet.members[0].FirstName}&nbsp;{projet.members[0].LastName}
+                                                                                {projet.members[0].Email}
                                                                             </td>
                                                                             <td>
                                                                                 {Moment(projet.createdBy.TypeLabel.SoumissionDate).format('DD-MM-YYYY')}
@@ -395,7 +425,18 @@ class ListeProjetByIDSessions extends Component {
                                                             }else
                                                             if(projet.members.length == 0)
                                                             {
-                                                                return (<h1 key={idx}>Ce projet n'a aucun membre</h1>)
+
+                                                                return(<div id={"btnajout"}>
+                                                                    <h1 key={idx}>Ce projet n'a aucun membre</h1>
+                                                                    <Link to={"/members/addMember/"+this.state.idSess+"/"+projet._id}
+                                                                          params={{
+
+                                                                              idSession: this.state.idSess,
+                                                                              idProjet: projet._id}}>
+
+                                                                        Ajouter un nouveau membre</Link>
+
+                                                                </div>)
                                                             }else
                                                             if (projet.members[0].Role === 'lead')
                                                                     return (
@@ -410,6 +451,7 @@ class ListeProjetByIDSessions extends Component {
                                                                             </td>
                                                                             <td>
                                                                                 {projet.members[0].FirsName}&nbsp;{projet.members[0].LastName}
+                                                                                {projet.members[0].Email}
                                                                             </td>
                                                                             <td>
                                                                                 {Moment(projet.createdBy.TypeLabel.SoumissionDate).format('DD-MM-YYYY')}
@@ -488,7 +530,7 @@ class ListeProjetByIDSessions extends Component {
 
                     </div>
 
-                    <Nav3/>
+                    <Nav1/>
 
                 </div>
 

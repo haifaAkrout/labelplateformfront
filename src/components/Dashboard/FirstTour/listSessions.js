@@ -4,10 +4,10 @@ import Moment from 'moment';
 import { Table } from 'reactstrap';
 import Header from "../../../containers/Header";
 import ContentContainer from "../../../containers/ContentContainer";
-import Nav3 from "../../../containers/Nav3";
+import Nav1 from "../../../containers/Nav1";
 import {Link} from "react-router-dom";
 import "../../../App.css"
-export default class listSessions extends React.Component{
+export default class listCandidatures extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
@@ -39,7 +39,7 @@ export default class listSessions extends React.Component{
         return (
 
             <div                id = "container"
-                                className = "effect mainnav-sm navbar-fixed mainnav-fixed" >
+                className = "effect mainnav-sm navbar-fixed mainnav-fixed" >
 
                 <Header/>
                 <div className="boxed">
@@ -52,27 +52,27 @@ export default class listSessions extends React.Component{
                         <div className="panel">
                             <div className="panel-body">
 
-                                <Table striped id={"tableSession"} className="td">
+                                <Table striped id={"tableSession"}>
                                     <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Start Date</th>
-                                        <th>End Date</th>
-                                        <th>Status</th>
-                                    </tr>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Start Date</th>
+                                            <th>End Date</th>
+                                            {/*<th>Status</th>*/}
+                                        </tr>
                                     </thead>
                                     <tbody>
-                                    {   this.state.sessions.map(function (session,idx) {
-                                        if(this.state.sessions.length == 0)
-                                            return (
-                                                <label>Aucune session disponible</label>
-                                            )
-                                        else
+                                        {   this.state.sessions.map(function (session,idx) {
+                                            if(this.state.sessions.length == 0)
+                                                return (
+                                                    <label>Aucune session disponible</label>
+                                                )
+                                            else
                                             return(
                                                 <tr  key={idx}>
-                                                    <td   >
+                                                    <td>
 
-                                                        <Link style={{color:"Black"}} to={"/sessions/listeProjetsparIdSes/"+ session._id} params={{ idSession: session._id}}>{session.Name}</Link>
+                                                        <Link to={"/sessions/listeProjetsparIdSes/"+ session._id} params={{ idSession: session._id}}>{session.Name}</Link>
                                                     </td>
                                                     <td>
                                                         {Moment(session.StartDate).format('DD-MM-YYYY')}
@@ -80,14 +80,14 @@ export default class listSessions extends React.Component{
                                                     <td>
                                                         {Moment(session.EndDate).format('DD-MM-YYYY')}
                                                     </td>
-                                                    <td>
-                                                        {session.Status}
-                                                    </td>
+                                                    {/*<td>*/}
+                                                    {/*    {session.Comment}*/}
+                                                    {/*</td>*/}
 
                                                 </tr>
-                                            )
+                                                )
 
-                                    }.bind(this))}
+                                        }.bind(this))}
                                     </tbody>
                                 </Table>
 
@@ -98,7 +98,7 @@ export default class listSessions extends React.Component{
 
                     </div>
 
-                    <Nav3/>
+                    <Nav1/>
 
                 </div>
 

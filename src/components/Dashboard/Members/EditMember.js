@@ -60,41 +60,44 @@ export default class EditMember extends Component{
     }
 
 
-handleEmailChange(evt) {
-    this.setState({ Email: evt.target.value });
-}
+    handleEmailChange(evt) {
+        this.setState({ Email: evt.target.value });
+    }
 
-handleLinkFacebookChange (evt) {
-    this.setState({ LinkFacebook: evt.target.value });
-}
+    handleLinkFacebookChange (evt) {
+        this.setState({ LinkFacebook: evt.target.value });
+    }
 
-handleLinkLinkedInChange (evt) {
-    this.setState({ LinkLinkedIn: evt.target.value });
-}
+    handleLinkLinkedInChange (evt) {
+        this.setState({ LinkLinkedIn: evt.target.value });
+    }
 
-handleimageChange (evt) {
-    this.setState({ image: evt.target.files[0] });
-}
+    handleimageChange (evt) {
+        this.setState({ image: evt.target.files[0] });
+    }
 
-handlePasswordChange (evt) {
-    this.setState({ password:evt.target.value });
-}
+    handlePasswordChange (evt) {
+        this.setState({ password:evt.target.value });
+    }
 
-handleRoleChange (evt) {
-    this.setState({ Role :evt.target.value });
-}
+    handleRoleChange (evt) {
+        this.setState({ Role :evt.target.value });
+    }
 
-handleDescriptionChange (evt) {
-    this.setState({ Description :evt.target.value });
-}
+    handleDescriptionChange (evt) {
+        this.setState({ Description :evt.target.value });
+    }
 
-handleBioChange (evt) {
-    this.setState({ Bio:evt.target.value });
-}
+    handleBioChange (evt) {
+        this.setState({ Bio:evt.target.value });
+    }
 
+    handleForm=event=>{
 
+    }
 
     handleSubmit=event=>{
+        console.log("updateeeeeed");
         const {idMembre} = this.props.match.params;
         console.log("id membre from ");
         console.log(idMembre);
@@ -140,7 +143,7 @@ handleBioChange (evt) {
                                         <h4 id={"namepage"}>Modifier Membre</h4>
                                     </div>
 
-                                    <form className="panel-body form-horizontal" onSubmit={this.handleSubmit}>
+                                    <form className="panel-body form-horizontal" onSubmit={this.handleForm}>
                                         <FormGroup row>
                                             <Label for="exampleEmail" sm={2}>LinkedIn</Label>
                                             <Col sm={10}>
@@ -200,7 +203,8 @@ handleBioChange (evt) {
 
                                         <FormGroup row>
                                             <Col sm={3}>
-                                                <Button color="primary" id={"btn"} type="submit" onClick={this.toggle}>Update</Button>
+                                                <Button color="primary" id={"btn"} type="submit"
+                                                        onClick={this.handleSubmit}>Update</Button>
                                                 <Fade in={this.state.fadeIn} tag="h5" className="mt-3">
                                                     This content will fade in and out as the button is pressed
                                                 </Fade>

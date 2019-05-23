@@ -35,6 +35,8 @@ export  default  class Resultat extends React.Component{
             idCharge:'',
             NomSession:'',
             DateSession:'',
+            idSes:'',
+            dateRedactionAvis:'',
             membres:''
         };
 
@@ -54,16 +56,18 @@ export  default  class Resultat extends React.Component{
 
 
     componentDidMount=event=> {
-        // const {idSession} = this.props.match.params
-        // console.log(idSession)
-        axios.get(`https://labelplatform.herokuapp.com/sessions/resultat/5cba2219bb0f481fe0e48b36`)
+        const {idSession} = this.props.match.params
+        console.log(idSession)
+        axios.get(`https://labelplatform.herokuapp.com/sessions/resultat/`+idSession)
             .then(response => {
                 this.setState({
                         resultats: response.data.Project,
                         membres: response.data.Project.members,
                         idCharge: response.data.Project,
+                        idSes:response.data._id,
                         NomSession: response.data.Name,
-                        DateSession: response.data.EndDate
+                        DateSession: response.data.EndDate,
+                        dateRedactionAvis:response.data.dateRedactionAvis
                     },
                     console.log(response.data.Project)
                 );
@@ -117,12 +121,22 @@ export  default  class Resultat extends React.Component{
                         <div className="panel">
                             <div className="panel-body">
                                 <div className="panel-heading" id={"divtitle"}>
+
                                     <label>
                                         {this.state.NomSession} &nbsp;
                                         <span>
                                             {Moment(this.state.DateSession).format('YYYY')}
                                         </span>
                                     </label>
+                                </div>
+                                <div className="panel-heading" id="divtitle">
+                                    <Link
+                                        to={"/chart/"+this.state.idSes}
+                                        params={{
+                                            idSession: this.state.idSes
+                                        }}>
+                                        Statistique
+                                    </Link>
                                 </div>
                                 <Nav tabs id={"nav"}>
                                     <NavItem>
@@ -156,13 +170,13 @@ export  default  class Resultat extends React.Component{
                                         <TabPane tabId="1">
                                             <Row>
                                                 <Col sm="12">
-                                                    <Table className="td" striped id={"table"}>
+                                                    <Table striped id={"table"}>
                                                         <thead>
                                                         <tr>
                                                             <th>Type </th>
                                                             <th>Candidature</th>
                                                             <th>Lead </th>
-                                                            <th>Soumishhhh le </th>
+                                                            <th>Soumis le </th>
                                                             <th>Charge</th>
                                                             <th>Resultat</th>
                                                             <th>Action</th>
@@ -171,9 +185,12 @@ export  default  class Resultat extends React.Component{
                                                         <tbody>
                                                         {this.state.resultats.map(function(projet, idx) {
                                                             if(
-                                                                projet.createdBy.Status === 'Pas_de_candidature'
+                                                                   projet.createdBy.Status === 'Pas_de_candidature'
+                                                                || projet.createdBy.Status === 'non traitée'
+                                                                || projet.createdBy.Status === 'refusee_1er_tour_en_instance'
                                                                 || projet.createdBy.Status === 'Brouillon'
-                                                                || projet.createdBy.Status === '1er_tour'|| projet.createdBy.Status =='refusee_premier_tour'
+                                                                || projet.createdBy.Status === '1er_tour'
+                                                                || projet.createdBy.Status =='refusee_1er_tour'
                                                             ) {
                                                                 return (
 
@@ -194,7 +211,7 @@ export  default  class Resultat extends React.Component{
 
                                                                                             <span key={m}>
                                                                                     {membre.LastName} {membre.FirstName}
-                                                                                                {membre.Email}
+                                                                                        {membre.Email}
                                                                                 </span>
                                                                                         )
 
@@ -250,7 +267,6 @@ export  default  class Resultat extends React.Component{
                                                             <th>Soumis le </th>
                                                             <th>Charge</th>
                                                             <th>Resultat</th>
-                                                            <th>Envoi du retour </th>
                                                         </tr>
 
                                                         </thead>
@@ -258,6 +274,7 @@ export  default  class Resultat extends React.Component{
                                                         {this.state.resultats.map(function(projet, idx) {
 
                                                             if(projet.createdBy.Status === '1er_tour_en_instance'
+                                                                ||projet.createdBy.Status === 'traitée'
                                                                 || projet.createdBy.Status === '2eme_tour_en_instance')
                                                             {
                                                                 return (
@@ -279,7 +296,7 @@ export  default  class Resultat extends React.Component{
 
                                                                                             <span key={m}>
                                                                                     {membre.LastName} {membre.FirstName}
-                                                                                                {membre.Email}
+                                                                                    {membre.Email}
                                                                                 </span>
 
 
@@ -297,19 +314,19 @@ export  default  class Resultat extends React.Component{
                                                                         <td>
                                                                             {projet.createdBy.Status}
                                                                         </td>
-                                                                        <td>
-                                                                            {/*<Link*/}
-                                                                            {/*    to={"/projects/detailsProjets/" + this.state.idSess + "/" + projet._id}*/}
-                                                                            {/*    params={{*/}
-                                                                            {/*        idSessionP: this.state.idSess,*/}
-                                                                            {/*        idProjet: projet._id*/}
-                                                                            {/*    }}>*/}
-                                                                            {/*    Envoyer*/}
-                                                                            {/*</Link>*/}
-                                                                            <Button color="primary" id={"btn"} type="submit"
-                                                                                    onClick={this.sendMail.bind(this, projet.createdBy._id)}>Enoyer retour</Button>
+                                                                        {/*<td>*/}
+                                                                        {/*    /!*<Link*!/*/}
+                                                                        {/*    /!*    to={"/projects/detailsProjets/" + this.state.idSess + "/" + projet._id}*!/*/}
+                                                                        {/*    /!*    params={{*!/*/}
+                                                                        {/*    /!*        idSessionP: this.state.idSess,*!/*/}
+                                                                        {/*    /!*        idProjet: projet._id*!/*/}
+                                                                        {/*    /!*    }}>*!/*/}
+                                                                        {/*    /!*    Envoyer*!/*/}
+                                                                        {/*    /!*</Link>*!/*/}
+                                                                        {/*    <Button color="primary" id={"btn"} type="submit"*/}
+                                                                        {/*            onClick={this.sendMail.bind(this, projet.createdBy._id)}>Enoyer retour</Button>*/}
 
-                                                                        </td>
+                                                                        {/*</td>*/}
 
                                                                     </tr>
 
@@ -327,17 +344,17 @@ export  default  class Resultat extends React.Component{
                                             <Row>
 
                                                 {this.state.resultats.map(function(projet, idx) {
-                                                    const csvData = [
-                                                        [   projet.Name,
-                                                            projet.createdBy.TypeLabel.type,
-                                                            projet.createdBy.Status,
-                                                        ]
-                                                    ];
-                                                    const headers = [
-                                                        { label: "Project Name", key: "nomprojet" },
-                                                        { label: "Activite", key: "activite" },
-                                                        { label: "cause", key: "cause" }
-                                                    ];
+                                                        const csvData = [
+                                                            [   projet.Name,
+                                                                projet.createdBy.TypeLabel.type,
+                                                                projet.createdBy.Status,
+                                                            ]
+                                                        ];
+                                                       const headers = [
+                                                            { label: "Project Name", key: "nomprojet" },
+                                                            { label: "Activite", key: "activite" },
+                                                            { label: "cause", key: "cause" }
+                                                        ];
                                                     if(projet.length != 0){
                                                         if(projet.createdBy.Status === "1er_tour"
                                                             || projet.createdBy.Status === "2eme_tour"){
@@ -363,7 +380,7 @@ export  default  class Resultat extends React.Component{
                                                             <th>Soumis le </th>
                                                             <th>Charge</th>
                                                             <th>Resultat</th>
-                                                            <th>Envoi du retour</th>
+                                                            {/*<th>Envoi du retour</th>*/}
                                                         </tr>
 
                                                         </thead>
@@ -409,14 +426,7 @@ export  default  class Resultat extends React.Component{
                                                                             {projet.createdBy.Status}
                                                                         </td>
                                                                         <td>
-                                                                            <Link
-                                                                                to={"/Candidatures/detailsCandidature/"+projet.createdBy._id}
-                                                                                params={{
-                                                                                    idCand:projet.createdBy._id
-                                                                                }}
-                                                                            >
-                                                                                Equipe
-                                                                            </Link>
+                                                                            date denvoi
 
                                                                         </td>
 

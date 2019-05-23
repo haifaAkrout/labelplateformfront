@@ -79,6 +79,9 @@ export default class AddMember extends Component{
 
     handleSubmit(e) {
         e.preventDefault();
+
+        const {idSession} = this.props.match.params
+        const {idProjet} = this.props.match.params
         console.log("ajout")
         const formData = new FormData();
         console.log("linklinkedin")
@@ -97,19 +100,25 @@ export default class AddMember extends Component{
                     'content-type': 'multipart/form-data'
                 }
             };
-
-            axios.post('https://labelplatform.herokuapp.com//members/addMemberwithLinkedIn/5cd2be1253a4e101c8942f09/5cd2c2c3a5129d9a70c1d165',
+            const img=this.state.image;
+            console.log("type",img.mimeType)
+           if(img.mimeType === 'image/jpeg' || img.mimeType === 'image/png'
+               || img.mimeType === 'image/jpg'){
+               alert('imaaaaaaaaaaaaaaaaaaaaaeg')
+           }
+            axios.post('https://labelplatform.herokuapp.com/members/addMemberwithLinkedIn/'+idSession+'/'+idProjet,
                 formData,config).then(res => {
                 console.log(res);
-                //  this.props.history.push('/sessions/');
+                this.props.history.push('../../../sessions');
             })
+
 
     }
     render(){
         return (
 
             <div
-                id = "container"
+                id =  "container"
                 className = "effect mainnav-sm navbar-fixed mainnav-fixed" >
 
                 <div className="boxed">
@@ -142,7 +151,8 @@ export default class AddMember extends Component{
                                         <FormGroup row>
                                             <Label for="exampleEmail" sm={2}>Role</Label>
                                             <Col sm={10}>
-                                                <Input  type="text" name="Role" onChange={this.handleRoleChange} className="form-control" placeholder="role"/>
+                                                <Input  type="text" name="Role" onChange={this.handleRoleChange}
+                                                        required className="form-control" placeholder="role"/>
                                             </Col>
                                         </FormGroup>
                                         <FormGroup row>
@@ -162,20 +172,23 @@ export default class AddMember extends Component{
                                         <FormGroup row>
                                             <Label for="exampleEmail" sm={2}>Description</Label>
                                             <Col sm={10}>
-                                                <textarea type="text" name="Description" onChange={this.handleDescriptionChange} required
+                                                <textarea type="text" name="Description" onChange={this.handleDescriptionChange}
+                                                          required
                                                           className="form-control" placeholder={"Description"}/>
                                             </Col>
                                         </FormGroup>
                                         <FormGroup row>
                                             <Label for="exampleEmail" sm={2}>Upload file</Label>
                                             <Col sm={10}>
-                                                <Input  type="file" name="image"  onChange={this.handleimageChange} className="form-control" placeholder=""/>
+                                                <Input  type="file" name="image"  onChange={this.handleimageChange}
+                                                        required className="form-control" placeholder=""/>
                                             </Col>
                                         </FormGroup>
                                         <FormGroup row>
                                             <Label for="exampleEmail" sm={2}>Password</Label>
                                             <Col sm={10}>
                                                 <Input  type="password" name="password"  onChange={this.handlePasswordChange}
+                                                        required
                                                        placeholder="don't tell!" className="form-control" />
                                             </Col>
                                         </FormGroup>

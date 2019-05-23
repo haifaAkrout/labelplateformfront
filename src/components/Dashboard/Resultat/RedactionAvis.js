@@ -10,7 +10,7 @@ export default class RedactionAvis extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            status:'',
+           status:'',
             charges:[],
             candidature:[],
             commentaire:'',
@@ -108,7 +108,8 @@ export default class RedactionAvis extends Component {
             }
             axios.post('https://labelplatform.herokuapp.com/avis/addAvis/'+this.state.idCharge,avis
             ).then(res=>{console.log(res);
-                console.log(res.data)})
+                console.log(res.data)});
+                console.log("redaction avis ");
 
             const candidature={
                 Status:"2eme_tour_en_instance"
@@ -122,7 +123,7 @@ export default class RedactionAvis extends Component {
             const avis = {
                 commentaire:this.state.commentaire
             }
-            axios.post('https://labelplatform.herokuapp.com/avis/add/'+this.state.idCharge,avis
+            axios.post('https://labelplatform.herokuapp.com/avis/addAvis/'+this.state.idCharge,avis
             ).then(res=>{console.log(res);
                 console.log(res.data)})
 
@@ -132,9 +133,10 @@ export default class RedactionAvis extends Component {
             axios.put('https://labelplatform.herokuapp.com/reviewC/updateCandidatureByCand/'+idCand,candidature
             ).then(res=>{console.log(res);
                 console.log(res.data)})
+
+            this.props.history.push('../../sessions');
         }
 
-        // this.context.router.history.push('/resultat/');
 
     }
 
@@ -188,7 +190,7 @@ export default class RedactionAvis extends Component {
                                         </FormGroup>
                                         <FormGroup row>
                                             <Button color="primary" size="sm"
-                                                // onClick={this.test.bind(this)}
+                                                     // onClick={this.test.bind(this)}
                                                     id="button1" type="submit"
                                                     className="btn btn-info" name="Passer en instance" value="Submit">
                                                 Passer en instance

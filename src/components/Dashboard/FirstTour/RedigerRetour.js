@@ -4,7 +4,7 @@ import axios from 'axios'
 import {Link} from "react-router-dom";
 import Header from "../../../containers/Header";
 import ContentContainer from "../../../containers/ContentContainer";
-import Nav3 from "../../../containers/Nav3";
+import Nav1 from "../../../containers/Nav1";
 
 export default class RedigerRetour extends Component {
     constructor(props) {
@@ -53,7 +53,7 @@ export default class RedigerRetour extends Component {
         console.log("id session")
         console.log(idSessionP)
         console.log(idProjet)
-        axios.get('https://labelplatform.herokuapp.com//projects/detailsProjets/'+idSessionP+'/'+idProjet)
+        axios.get('https://labelplatform.herokuapp.com/projects/detailsProjets/'+idSessionP+'/'+idProjet)
             .then(response => {
 
                 this.setState({
@@ -102,7 +102,7 @@ export default class RedigerRetour extends Component {
             const candidature={
                 Status:this.state.Avis
             }
-            axios.put('https://labelplatform.herokuapp.com/reviewC//updateCandidature/'+this.state.idProjet,candidature
+            axios.put('https://labelplatform.herokuapp.com/updateCandidature/'+this.state.idProjet,candidature
             ).then(res=>{console.log(res);
                 console.log(res.data)})
         }
@@ -255,7 +255,7 @@ export default class RedigerRetour extends Component {
 
                     </div>
 
-                    <Nav3/>
+                    <Nav1/>
 
                 </div>
 
