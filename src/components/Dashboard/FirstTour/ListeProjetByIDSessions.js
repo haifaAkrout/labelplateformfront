@@ -187,8 +187,8 @@ class ListeProjetByIDSessions extends Component {
                                                             if(projet.members.length == 0)
                                                             {
                                                                 return(<div id={"btnajout"}>
-                                                                    <h1 key={idx}>Ce projet n'a aucun membre</h1>
-                                                                    <Link to={"/members/addMember/"+this.state.idSess+"/"+projet._id}
+                                                                    <h1 key={idx} style={{color:"black"}}>Ce projet n'a aucun membre</h1>
+                                                                    <Link to={"/members/addMember/"+this.state.idSess+"/"+projet._id} style={{color:"black"}}
                                                                           params={{
 
                                                                               idSession: this.state.idSess,
@@ -307,8 +307,8 @@ class ListeProjetByIDSessions extends Component {
                                                             if(projet.members.length == 0)
                                                             {
                                                                 return(<div id={"btnajout"}>
-                                                                    <h1 key={idx}>Ce projet n'a aucun membre</h1>
-                                                                    <Link to={"/members/addMember/"+this.state.idSess+"/"+projet._id}
+                                                                    <h1 key={idx} style={{color:"black"}}>Ce projet n'a aucun membre</h1>
+                                                                    <Link to={"/members/addMember/"+this.state.idSess+"/"+projet._id}  style={{color:"black"}}
                                                                           params={{
 
                                                                               idSession: this.state.idSess,
@@ -427,8 +427,8 @@ class ListeProjetByIDSessions extends Component {
                                                             {
 
                                                                 return(<div id={"btnajout"}>
-                                                                    <h1 key={idx}>Ce projet n'a aucun membre</h1>
-                                                                    <Link to={"/members/addMember/"+this.state.idSess+"/"+projet._id}
+                                                                    <h1 key={idx} style={{color:"black"}}>Ce projet n'a aucun membre</h1>
+                                                                    <Link to={"/members/addMember/"+this.state.idSess+"/"+projet._id}  style={{color:"black"}}
                                                                           params={{
 
                                                                               idSession: this.state.idSess,
