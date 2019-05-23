@@ -397,7 +397,7 @@ export default class DetailsProjetParIdSesIdProjet extends Component {
                                       style={{backgroundColor: this.state.color_pwd_input,width:600}}
                                   onChange={this.handleCommentaireChange} required/>
                             <div className="panel-group" id="divbutton">
-                                <Button color="primary" size="sm" type="submit"  disabled={this.state.active}
+                                <Button color="link" type="submit"  disabled={this.state.active}
                                         onClick={this.test.bind(this)}
                                         className="btn btn-info " id="button1" name="Validation de l'avis"
                                         value="Submit">
@@ -409,7 +409,7 @@ export default class DetailsProjetParIdSesIdProjet extends Component {
 
                                 &nbsp;
 
-                                <Button color="primary" size="sm" type="submit"  disabled={!this.state.active}
+                                <Button color="link" type="submit"  disabled={!this.state.active}
                                         className="btn btn-info " id="button2" name="Validation de l'avis"
                                         onClick={this.updateAvisCharge.bind(this)}
                                  value="Submit">
