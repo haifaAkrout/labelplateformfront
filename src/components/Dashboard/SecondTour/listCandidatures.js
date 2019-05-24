@@ -321,7 +321,7 @@ export  default  class listCandidatures extends React.Component{
                                                 </thead>
                                                 <tbody>
                                                 {Sessions.map(d=> {
-                                                    if (d.createdBy.charges.review.type==="negatif" && d.createdBy.Status==="non Traité")
+                                                    if (d.createdBy.charges.review.type==="negatif" && d.createdBy.Status==="Brouillon")
                                                         return (
 
                                                             <tr key={d._id}>
@@ -418,7 +418,7 @@ export  default  class listCandidatures extends React.Component{
                                                 </thead>
                                                 <tbody>
                                                 {this.state.Sessions.map(function(d, idx){
-                                                    if (d.createdBy.charges.review.type==="neutre" && d.createdBy.Status==="non Traité")
+                                                    if (d.createdBy.charges.review.type==="neutre" && d.createdBy.Status==="Brouillon")
                                                         return (
 
                                                             <tr key={d._id}>
