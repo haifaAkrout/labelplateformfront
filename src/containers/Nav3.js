@@ -60,7 +60,7 @@ class Nav3 extends React.Component {
                                         <a href="#">
                                             <i className="fa fa-th"></i>
                                             <span className="menu-title">
-                                               Second Tour
+                                               first Tour
                                             </span>
                                             <i className="arrow"></i>
                                         </a>
